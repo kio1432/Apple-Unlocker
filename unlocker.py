@@ -3,11 +3,9 @@ import os
 import time
 import json
 import random
-import hashlib
 import logging
 import tls_client
 import urllib.parse
-from keyauth import api
 from colorama import Fore
 from threading import Lock
 from yescaptcha.task import ImageToTextTask
