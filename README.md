@@ -20,8 +20,8 @@ This script automates the process of unlocking Apple ID accounts by solving capt
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   git clone [<repository-url>](https://github.com/Levcqhh/Apple-Unlocker.git)
+   cd <[repository-folder>](https://github.com/Levcqhh/Apple-Unlocker.git)
    ```
 
 2. Install the required dependencies:
