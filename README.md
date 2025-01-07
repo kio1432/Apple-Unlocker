@@ -12,7 +12,7 @@ This script automates the process of unlocking Apple ID accounts by solving capt
 - Security question verification and response.
 - Password reset with a new password provided in the configuration.
 - Multi-threaded support for processing multiple accounts.
-- VPN integration for bypassing rate limits or IP bans.
+- VPN integration for bypassing rate limits or IP bans [ExpressVPN](https://www.expressvpn.com/go/home?gad_source=1&gclid=Cj0KCQiAvvO7BhC-ARIsAGFyToXmrJ1y0xWaGxR4_VjarR62fdbninp7bHhV_XymHZHfBhCq931f7E8aAosuEALw_wcB)
 
 ---
 
