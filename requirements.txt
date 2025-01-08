@@ -1,4 +1,5 @@
 tls_client
+requests
 colorama
 evpn
 loguru
