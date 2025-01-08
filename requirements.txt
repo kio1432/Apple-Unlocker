@@ -2,3 +2,4 @@ tls_client
 colorama
 evpn
 loguru
+typing_extensions
