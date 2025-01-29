@@ -34,6 +34,7 @@ def remove_line_containing_text(file_path, target_text):
         print(f"An ERROR : {e}")
 
 qus = {
+    "What was the name of your best friend as a teenager?":2,
     "What is the first name of your best friend in high school?": 2,
     "What is your dream job?": 3,
     "In what city did your parents meet?": 4
