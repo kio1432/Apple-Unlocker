@@ -14,7 +14,16 @@ import concurrent.futures
 from evpn import ExpressVpnApi
 
 lock = Lock()
-logging.basicConfig(level=logging.INFO) 
+# Enhanced logging configuration
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('files/debug.log', encoding='utf-8'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__) 
 
 with open("files/settings.json")as f:
     settings = json.load(f)
@@ -33,29 +42,60 @@ def remove_line_containing_text(file_path, target_text):
     except Exception as e:
         print(f"An ERROR : {e}")
 
+# Security questions mapping - expanded to cover more variations
 qus = {
-    "What was the name of your best friend as a teenager?":2,
-    "What is the first name of your best friend in high school?": 2,
+    # Chinese versions of security questions
+    "你少年时代最好的朋友叫什么名字": 2,
+    "你少年时代最好的朋友叫什么名字？": 2,
+    "你的理想工作是什么": 3,
+    "你的理想工作是什么？": 3,
+    "你的父母是在哪里认识的": 4,
+    "你的父母是在哪里认识的？": 4,
+    
+    # English versions of security questions
+    "the name of a childhood friend": 2,
+    "What is the name of a childhood friend?": 2,
+    "What was the name of your childhood friend?": 2,
+    "What is the name of your childhood friend?": 2,
+    "Name of a childhood friend": 2,
+    
+    "dream job": 3,
     "What is your dream job?": 3,
-    "In what city did your parents meet?": 4
+    "What was your dream job?": 3,
+    "What is your ideal job?": 3,
+    "What was your ideal job?": 3,
+    "Dream job": 3,
+    "Ideal job": 3,
+    
+    "where the parents met": 4,
+    "Where did your parents meet?": 4,
+    "Where did your parents first meet?": 4,
+    "Where your parents met": 4,
+    "Where parents met": 4,
+    
+    # Additional common security questions (adjust indices as needed)
+    "What was your first pet's name?": 5,
+    "What is your first pet's name?": 5,
+    "First pet's name": 5,
+    "你的第一只宠物叫什么名字": 5,
+    "你的第一只宠物叫什么名字？": 5,
+    
+    "What was the name of your first school?": 6,
+    "What is the name of your first school?": 6,
+    "First school name": 6,
+    "你第一所学校的名字是什么": 6,
+    "你第一所学校的名字是什么？": 6,
+    
+    "What city were you born in?": 7,
+    "What was your birth city?": 7,
+    "Birth city": 7,
+    "你出生在哪个城市": 7,
+    "你出生在哪个城市？": 7
 }
 
 
-os.system('cls')
-print(f"""{Fore.RED} 
-      
-        :::       ::::::::  :::  :::  :::::::   ::::::    ::::::   :::        ::::::
-        :::       ::::::::  :::  :::  :::::::  ::::::::  ::::::::  :::       :::::::
-        ::!       ::!       ::!  :::    ::!    ::!  :::  ::!  :::  ::!       !::
-        !:!       !:!       !:!  :!:    !:!    !:!  :!:  !:!  :!:  !:!       !:!
-        :!!       :!!!:!    :!:  !:!    :!!    :!:  !:!  :!:  !:!  :!!       !!::!!
-        !!!       !!!!!:    !:!  !!!    !!!    !:!  !!!  !:!  !!!  !!!        !!:!!!
-        !!:       !!:       :!:  !!:    !!:    !!:  !!!  !!:  !!!  !!:            !:!
-         :!:      :!:        ::!!:!     :!:    :!:  !:!  :!:  !:!   :!:          !:!
-         :: ::::   :: ::::    ::::       ::    ::::: ::  ::::: ::   :: ::::  :::: ::
-        : :: : :  : :: ::      :         :      : :  :    : :  :   : :: : :  :: : :
-        Discord User :levcqh{Fore.RESET}
-""")
+# Apple ID Unlocker Script Started
+print(f"{Fore.GREEN}[+] Apple ID Unlocker Started{Fore.RESET}")
 class unlocker():
 
     def __init__(self) -> None:
@@ -133,11 +173,16 @@ class unlocker():
                 if 'captchaAnswer.Invalid' in sendAppleid.text:
                     pass
                 elif sendAppleid.status_code == 503:
-                    with ExpressVpnApi() as api:
-                        ran = random.choice([84,3,166,19,1,202,2,165,18,172,161,9,95,3,74,3,70,204,94,71,207,79,45,169,178,15,90,5,153,8,103,150,182,29])
-                        api.connect(ran)
-                    print(f"{Fore.GREEN} [ + ] VPN was Changed Successfuly===> retrying ")
-                    time.sleep(10)
+                    # Check if VPN is enabled in settings before attempting to change VPN
+                    if settings.get('vpn_enabled', True):  # Default to True if not specified
+                        with ExpressVpnApi() as api:
+                            ran = random.choice([84,3,166,19,1,202,2,165,18,172,161,9,95,3,74,3,70,204,94,71,207,79,45,169,178,15,90,5,153,8,103,150,182,29])
+                            api.connect(ran)
+                        print(f"{Fore.GREEN} [ + ] VPN was Changed Successfuly===> retrying ")
+                        time.sleep(10)
+                    else:
+                        print(f"{Fore.YELLOW} [ ! ] VPN is disabled in settings - skipping VPN change")
+                        time.sleep(5)  # Still add some delay
                     pass
 
                 else:
@@ -155,7 +200,21 @@ class unlocker():
                 """ * Send Birthday * """
 
                 sendBirthdayGET = self.session.get(f'https://iforgot.apple.com{sendAuthenticationmethod.headers["Location"]}',headers=self.headers)
-                self.headers['sstt'] = sendBirthdayGET.headers['Sstt']
+                
+                # Check if Sstt header exists
+                if 'Sstt' in sendBirthdayGET.headers:
+                    self.headers['sstt'] = sendBirthdayGET.headers['Sstt']
+                    logger.info(f"[{self.email}] Got Sstt token from birthday GET")
+                else:
+                    logger.error(f"[{self.email}] No Sstt header in birthday GET response")
+                    logger.error(f"[{self.email}] Available headers: {list(sendBirthdayGET.headers.keys())}")
+                    print(f"{Fore.RED}ERROR  'Sstt' - Missing Sstt header in birthday response{Fore.RESET}")
+                    print(f"{Fore.RED} [ + ] {self.email} ==> ERROR While unlock ==>{Fore.RESET}")
+                    remove_line_containing_text('files/Accounts.txt',data_email)
+                    with lock:
+                        with open("files/error.txt","a+")as f :
+                            f.write(f'{self.data_email} - Missing Sstt header in birthday response\n')
+                    return
 
                 """ * sendBirthdayPOST * """
                 data = {
@@ -173,45 +232,223 @@ class unlocker():
                         with open("files/error.txt","a+")as f :
                             f.write(f'{self.data_email}\n')     
                     return
-                self.headers['sstt'] = sendBirthdayPOST.headers['Sstt']
+                    
+                # Check if Sstt header exists in birthday POST response (optional)
+                if 'Sstt' in sendBirthdayPOST.headers:
+                    self.headers['sstt'] = sendBirthdayPOST.headers['Sstt']
+                    logger.info(f"[{self.email}] Got Sstt token from birthday POST")
+                else:
+                    logger.warning(f"[{self.email}] No Sstt header in birthday POST response - continuing with existing token")
+                    logger.info(f"[{self.email}] Available headers: {list(sendBirthdayPOST.headers.keys())}")
+                    print(f"{Fore.YELLOW}[WARNING] {self.email} - No Sstt in birthday POST, using existing token{Fore.RESET}")
+                    # Continue execution - we may still have a valid Sstt from previous request
         
                 """ * Get Questions * """
                 sendQuestionsGET = self.session.get(f'https://iforgot.apple.com{sendBirthdayPOST.headers["Location"]}',headers=self.headers)
-                self.headers['sstt'] = sendQuestionsGET.headers['Sstt']
+                
+                # Check if Sstt header exists in questions GET response (optional)
+                if 'Sstt' in sendQuestionsGET.headers:
+                    self.headers['sstt'] = sendQuestionsGET.headers['Sstt']
+                    logger.info(f"[{self.email}] Got Sstt token from questions GET")
+                else:
+                    logger.warning(f"[{self.email}] No Sstt header in questions GET response - continuing with existing token")
+                    logger.info(f"[{self.email}] Available headers: {list(sendQuestionsGET.headers.keys())}")
+                    print(f"{Fore.YELLOW}[WARNING] {self.email} - No Sstt in questions GET, using existing token{Fore.RESET}")
+                    # Continue execution - we may still have a valid Sstt from previous request
 
 
                 """ * Set Payload * """
-
-                question1 = sendQuestionsGET.json()['questions'][0]['question']
-                question2 = sendQuestionsGET.json()['questions'][1]['question']
-                number1 = sendQuestionsGET.json()['questions'][0]['number']
-                number2 = sendQuestionsGET.json()['questions'][1]['number']
-                qu_id1 = sendQuestionsGET.json()['questions'][0]['id']
-                qu_id2 = sendQuestionsGET.json()['questions'][1]['id']
-
-                payload = {
-                    "questions": [
-                        {
-                            "question": question1,
-                            "answer": self.data_email.split(',')[qus[question1]],
-                            "id": qu_id1,
-                            "number": number1
-                        },
-                        {
-                            "question": question2,
-                            "answer": self.data_email.split(',')[qus[question2]],
-                            "id": qu_id2,
-                            "number": number2
-                        }
-                    ]
-                }
-                sendQuestionsPOST = self.session.post('https://iforgot.apple.com/password/verify/questions',headers=self.headers,json=payload)
-                if sendQuestionsPOST.status_code == 400:
-                    print(f"{Fore.RED} [ + ] {self.email} ==> ERROR While unlock ==> INVAILD questions")
+                
+                # Check if response contains questions
+                try:
+                    response_json = sendQuestionsGET.json()
+                    logger.info(f"[{self.email}] Questions response: {response_json}")
+                    
+                    if 'questions' not in response_json:
+                        logger.error(f"[{self.email}] No 'questions' key in response: {response_json}")
+                        logger.error(f"[{self.email}] Questions GET status code: {sendQuestionsGET.status_code}")
+                        logger.error(f"[{self.email}] Questions GET URL: {sendQuestionsGET.url}")
+                        
+                        # Check if it's an empty response or error response
+                        if response_json == {}:
+                            # Check if it's a session timeout
+                            if 'session/timeout' in str(sendQuestionsGET.url):
+                                logger.error(f"[{self.email}] SESSION TIMEOUT DETECTED")
+                                logger.error(f"[{self.email}] Apple session expired before reaching security questions")
+                                print(f"{Fore.RED}ERROR - Session timeout{Fore.RESET}")
+                                print(f"{Fore.YELLOW}Suggestion: This is likely due to Apple's security measures{Fore.RESET}")
+                                print(f"{Fore.YELLOW}Try again later or check account status{Fore.RESET}")
+                            else:
+                                logger.error(f"[{self.email}] Empty JSON response - possible causes:")
+                                logger.error(f"[{self.email}] 1. Incorrect birthday data")
+                                logger.error(f"[{self.email}] 2. Account locked/blocked")
+                                logger.error(f"[{self.email}] 3. Too many attempts")
+                                logger.error(f"[{self.email}] 4. Apple API changes")
+                                print(f"{Fore.RED}ERROR - Empty questions response (possible birthday/account issue){Fore.RESET}")
+                                print(f"{Fore.YELLOW}Suggestion: Check birthday format in Accounts.txt (MM/DD/YY){Fore.RESET}")
+                        else:
+                            print(f"{Fore.RED}ERROR  'questions'{Fore.RESET}")
+                            
+                        print(f"{Fore.RED} [ + ] {self.email} ==> ERROR While unlock ==>{Fore.RESET}")
+                        remove_line_containing_text('files/Accounts.txt',data_email)
+                        with lock:
+                            with open("files/error.txt","a+")as f :
+                                f.write(f'{self.data_email} - No questions in response (empty JSON)\n')
+                        return
+                    
+                    if len(response_json['questions']) < 2:
+                        logger.error(f"[{self.email}] Not enough questions in response: {len(response_json['questions'])}")
+                        print(f"{Fore.RED}[ERROR] Not enough questions received{Fore.RESET}")
+                        remove_line_containing_text('files/Accounts.txt',data_email)
+                        with lock:
+                            with open("files/error.txt","a+")as f :
+                                f.write(f'{self.data_email} - Not enough questions\n')
+                        return
+                        
+                    question1 = response_json['questions'][0]['question']
+                    question2 = response_json['questions'][1]['question']
+                    number1 = response_json['questions'][0]['number']
+                    number2 = response_json['questions'][1]['number']
+                    qu_id1 = response_json['questions'][0]['id']
+                    qu_id2 = response_json['questions'][1]['id']
+                    
+                except (KeyError, IndexError, ValueError) as e:
+                    logger.error(f"[{self.email}] Error parsing questions response: {e}")
+                    logger.error(f"[{self.email}] Response text: {sendQuestionsGET.text}")
+                    print(f"{Fore.RED}ERROR  'questions'{Fore.RESET}")
+                    print(f"{Fore.RED} [ + ] {self.email} ==> ERROR While unlock ==>{Fore.RESET}")
                     remove_line_containing_text('files/Accounts.txt',data_email)
                     with lock:
                         with open("files/error.txt","a+")as f :
-                            f.write(f'{self.data_email}\n')    
+                            f.write(f'{self.data_email} - Questions parsing error: {e}\n')
+                    return
+                
+                # Enhanced logging for question debugging
+                logger.info(f"[{self.email}] Received questions from Apple:")
+                logger.info(f"[{self.email}] Question 1: '{question1}' (ID: {qu_id1}, Number: {number1})")
+                logger.info(f"[{self.email}] Question 2: '{question2}' (ID: {qu_id2}, Number: {number2})")
+                
+                # Check if questions exist in our mapping
+                questions_missing = []
+                if question1 not in qus:
+                    logger.error(f"[{self.email}] QUESTION 1 NOT FOUND IN MAPPING: '{question1}'")
+                    logger.error(f"[{self.email}] Available questions in mapping: {list(qus.keys())}")
+                    print(f"{Fore.RED}[ERROR] Question 1 not found in mapping: '{question1}'{Fore.RESET}")
+                    questions_missing.append(question1)
+                    
+                if question2 not in qus:
+                    logger.error(f"[{self.email}] QUESTION 2 NOT FOUND IN MAPPING: '{question2}'")
+                    logger.error(f"[{self.email}] Available questions in mapping: {list(qus.keys())}")
+                    print(f"{Fore.RED}[ERROR] Question 2 not found in mapping: '{question2}'{Fore.RESET}")
+                    questions_missing.append(question2)
+                    
+                # If any questions are missing, skip this account
+                if questions_missing:
+                    logger.error(f"[{self.email}] Skipping account due to missing question mappings: {questions_missing}")
+                    print(f"{Fore.RED}[ERROR] {self.email} - Missing question mappings, skipping account{Fore.RESET}")
+                    remove_line_containing_text('files/Accounts.txt',data_email)
+                    with lock:
+                        with open("files/error.txt","a+")as f :
+                            f.write(f'{self.data_email} - Missing question mappings: {questions_missing}\n')
+                    return
+                
+                # Log the answers we're about to use
+                if question1 in qus:
+                    answer_index1 = qus[question1]
+                    answer1 = self.data_email.split(',')[answer_index1]
+                    logger.info(f"[{self.email}] Question 1 answer index: {answer_index1}, Answer: '{answer1}'")
+                else:
+                    logger.error(f"[{self.email}] Cannot get answer for question 1 - question not in mapping")
+                    
+                if question2 in qus:
+                    answer_index2 = qus[question2]
+                    answer2 = self.data_email.split(',')[answer_index2]
+                    logger.info(f"[{self.email}] Question 2 answer index: {answer_index2}, Answer: '{answer2}'")
+                else:
+                    logger.error(f"[{self.email}] Cannot get answer for question 2 - question not in mapping")
+
+                # Build payload with error handling
+                try:
+                    payload = {
+                        "questions": [
+                            {
+                                "question": question1,
+                                "answer": self.data_email.split(',')[qus[question1]],
+                                "id": qu_id1,
+                                "number": number1
+                            },
+                            {
+                                "question": question2,
+                                "answer": self.data_email.split(',')[qus[question2]],
+                                "id": qu_id2,
+                                "number": number2
+                            }
+                        ]
+                    }
+                    logger.info(f"[{self.email}] Payload created successfully")
+                    logger.debug(f"[{self.email}] Full payload: {payload}")
+                    
+                    # Detailed logging of answers being sent
+                    logger.info(f"[{self.email}] === DETAILED ANSWER DEBUG ===")
+                    logger.info(f"[{self.email}] Answer 1 raw: '{self.data_email.split(',')[qus[question1]]}'")
+                    logger.info(f"[{self.email}] Answer 1 repr: {repr(self.data_email.split(',')[qus[question1]])}")
+                    logger.info(f"[{self.email}] Answer 1 bytes: {self.data_email.split(',')[qus[question1]].encode('utf-8')}")
+                    logger.info(f"[{self.email}] Answer 2 raw: '{self.data_email.split(',')[qus[question2]]}'")
+                    logger.info(f"[{self.email}] Answer 2 repr: {repr(self.data_email.split(',')[qus[question2]])}")
+                    logger.info(f"[{self.email}] Answer 2 bytes: {self.data_email.split(',')[qus[question2]].encode('utf-8')}")
+                    logger.info(f"[{self.email}] === END ANSWER DEBUG ===")
+                    
+                except KeyError as e:
+                    logger.error(f"[{self.email}] KeyError when building payload: {e}")
+                    logger.error(f"[{self.email}] Missing question in qus mapping: {e}")
+                    print(f"{Fore.RED}[ERROR] {self.email} - Question mapping error: {e}{Fore.RESET}")
+                    remove_line_containing_text('files/Accounts.txt',data_email)
+                    with lock:
+                        with open("files/error.txt","a+")as f :
+                            f.write(f'{self.data_email} - Question mapping error: {e}\n')
+                    return
+                except IndexError as e:
+                    logger.error(f"[{self.email}] IndexError when accessing answer: {e}")
+                    logger.error(f"[{self.email}] Account data: {self.data_email}")
+                    print(f"{Fore.RED}[ERROR] {self.email} - Answer index error: {e}{Fore.RESET}")
+                    remove_line_containing_text('files/Accounts.txt',data_email)
+                    with lock:
+                        with open("files/error.txt","a+")as f :
+                            f.write(f'{self.data_email} - Answer index error: {e}\n')
+                    return
+                logger.info(f"[{self.email}] Sending questions to Apple...")
+                sendQuestionsPOST = self.session.post('https://iforgot.apple.com/password/verify/questions',headers=self.headers,json=payload)
+                
+                logger.info(f"[{self.email}] Questions response status: {sendQuestionsPOST.status_code}")
+                logger.debug(f"[{self.email}] Questions response text: {sendQuestionsPOST.text}")
+                
+                if sendQuestionsPOST.status_code == 400:
+                    logger.error(f"[{self.email}] Questions validation failed (400)")
+                    logger.error(f"[{self.email}] Response: {sendQuestionsPOST.text}")
+                    
+                    # Try to parse the error response
+                    try:
+                        error_response = sendQuestionsPOST.json()
+                        if 'serviceErrors' in error_response:
+                            for error in error_response['serviceErrors']:
+                                if error.get('code') == 'crIncorrect':
+                                    logger.error(f"[{self.email}] Security answers incorrect: {error.get('message')}")
+                                    print(f"{Fore.RED} [ + ] {self.email} ==> ERROR: Security answers incorrect{Fore.RESET}")
+                                else:
+                                    logger.error(f"[{self.email}] Service error: {error}")
+                                    print(f"{Fore.RED} [ + ] {self.email} ==> ERROR: {error.get('message', 'Unknown error')}{Fore.RESET}")
+                        else:
+                            print(f"{Fore.RED} [ + ] {self.email} ==> ERROR While unlock ==> INVALID questions{Fore.RESET}")
+                    except:
+                        print(f"{Fore.RED} [ + ] {self.email} ==> ERROR While unlock ==> INVALID questions{Fore.RESET}")
+                    
+                    print(f"{Fore.RED}     Question 1: '{question1}' -> Answer: '{self.data_email.split(',')[qus[question1]]}'")
+                    print(f"{Fore.RED}     Question 2: '{question2}' -> Answer: '{self.data_email.split(',')[qus[question2]]}'")
+                    print(f"{Fore.YELLOW}     Suggestion: Check if the answers in Accounts.txt match your actual security question answers{Fore.RESET}")
+                    remove_line_containing_text('files/Accounts.txt',data_email)
+                    with lock:
+                        with open("files/error.txt","a+")as f :
+                            f.write(f'{self.data_email} - Invalid security answers (400)\n')    
                     return
                 if sendAppleid.status_code == 302:
 
@@ -221,7 +458,21 @@ class unlocker():
 
                     """ * Send reset * """
                     sendResetGET = self.session.get(f'https://iforgot.apple.com{sendOptionsGET.headers["Location"]}',headers=self.headers)
-                    self.headers['sstt'] = sendResetGET.headers['Sstt']
+                    
+                    # Check if Sstt header exists in reset GET response
+                    if 'Sstt' in sendResetGET.headers:
+                        self.headers['sstt'] = sendResetGET.headers['Sstt']
+                        logger.info(f"[{self.email}] Got Sstt token from reset GET")
+                    else:
+                        logger.error(f"[{self.email}] No Sstt header in reset GET response")
+                        logger.error(f"[{self.email}] Available headers: {list(sendResetGET.headers.keys())}")
+                        print(f"{Fore.RED}ERROR  'Sstt' - Missing Sstt header in reset response{Fore.RESET}")
+                        print(f"{Fore.RED} [ + ] {self.email} ==> ERROR While unlock ==>{Fore.RESET}")
+                        remove_line_containing_text('files/Accounts.txt',data_email)
+                        with lock:
+                            with open("files/error.txt","a+")as f :
+                                f.write(f'{self.data_email} - Missing Sstt header in reset response\n')
+                        return
 
                     """ * RESET PASSWORD * """
                     sendResetPassword = self.session.post('https://iforgot.apple.com/password/reset',headers=self.headers,json={"password":self.new_password})
