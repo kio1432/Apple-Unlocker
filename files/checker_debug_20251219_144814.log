@@ -1,0 +1,211 @@
+2025-12-19 14:48:14,446 - INFO - 
+############################################################
+2025-12-19 14:48:14,446 - INFO - CHECKING: eqnvsyvpws@outlook.com
+2025-12-19 14:48:14,446 - INFO - ############################################################
+2025-12-19 14:48:14,446 - INFO - [eqnvsyvpws@outlook.com] Step 1: Loading initial page...
+2025-12-19 14:48:15,393 - INFO - 
+============================================================
+2025-12-19 14:48:15,393 - INFO - STEP: 1. Initial Page
+2025-12-19 14:48:15,393 - INFO - ============================================================
+2025-12-19 14:48:15,393 - INFO - Status Code: 200
+2025-12-19 14:48:15,393 - INFO - URL: https://iforgot.apple.com/password/verify/appleid
+2025-12-19 14:48:15,393 - DEBUG - Response Headers:
+2025-12-19 14:48:15,393 - INFO -   Location: /password/verify/appleid...
+2025-12-19 14:48:15,393 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'X-Apple-I-Web-Token=; Max-Age=...
+2025-12-19 14:48:15,394 - INFO -   Sstt: 3v8Wdywq0Ch78o0Nrqq5%2F3Azw89ssDz3ZvA9de%2Fh2O7AYD5dNH%2BBksPqxP5ixbTidSuN6NSlFU%2BOCZdMV4lPnrJmVZgr...
+2025-12-19 14:48:15,394 - INFO -   X-Apple-I-Request-Id: 9a999588-dcd0-11f0-ac46-bb0fd901151a...
+2025-12-19 14:48:15,394 - INFO - ============================================================
+
+2025-12-19 14:48:15,394 - INFO - [eqnvsyvpws@outlook.com] Got sstt token: 3v8Wdywq0Ch78o0Nrqq5/3Azw89ssDz3ZvA9de/h2O7AYD5dNH...
+2025-12-19 14:48:15,394 - INFO - [eqnvsyvpws@outlook.com] Step 2: Getting captcha...
+2025-12-19 14:48:15,671 - INFO - 
+============================================================
+2025-12-19 14:48:15,671 - INFO - STEP: 2. Captcha (attempt 1)
+2025-12-19 14:48:15,671 - INFO - ============================================================
+2025-12-19 14:48:15,671 - INFO - Status Code: 401
+2025-12-19 14:48:15,671 - INFO - URL: https://iforgot.apple.com/captcha?captchaType=IMAGE
+2025-12-19 14:48:15,672 - DEBUG - Response Headers:
+2025-12-19 14:48:15,672 - INFO -   Location: /captcha?captchaType=IMAGE...
+2025-12-19 14:48:15,672 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com...
+2025-12-19 14:48:15,672 - INFO -   X-Apple-I-Request-Id: 9ab951c0-dcd0-11f0-9dd1-e96e889cbc8f...
+2025-12-19 14:48:15,672 - DEBUG - Response Body: {
+  "payload" : {
+    "contentType" : "image/jpeg",
+    "content" : "/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAKADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIW
+2025-12-19 14:48:15,672 - INFO - ============================================================
+
+2025-12-19 14:48:16,963 - INFO - 
+============================================================
+2025-12-19 14:48:16,963 - INFO - STEP: 2. Captcha (attempt 2)
+2025-12-19 14:48:16,963 - INFO - ============================================================
+2025-12-19 14:48:16,963 - INFO - Status Code: 401
+2025-12-19 14:48:16,964 - INFO - URL: https://iforgot.apple.com/captcha?captchaType=IMAGE
+2025-12-19 14:48:16,964 - DEBUG - Response Headers:
+2025-12-19 14:48:16,964 - INFO -   Location: /captcha?captchaType=IMAGE...
+2025-12-19 14:48:16,964 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com...
+2025-12-19 14:48:16,964 - INFO -   X-Apple-I-Request-Id: 9b7d8cbd-dcd0-11f0-ac46-bb0fd901151a...
+2025-12-19 14:48:16,964 - DEBUG - Response Body: {
+  "payload" : {
+    "contentType" : "image/jpeg",
+    "content" : "/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAKADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIW
+2025-12-19 14:48:16,964 - INFO - ============================================================
+
+2025-12-19 14:48:18,269 - INFO - 
+============================================================
+2025-12-19 14:48:18,270 - INFO - STEP: 2. Captcha (attempt 3)
+2025-12-19 14:48:18,270 - INFO - ============================================================
+2025-12-19 14:48:18,270 - INFO - Status Code: 401
+2025-12-19 14:48:18,270 - INFO - URL: https://iforgot.apple.com/captcha?captchaType=IMAGE
+2025-12-19 14:48:18,270 - DEBUG - Response Headers:
+2025-12-19 14:48:18,270 - INFO -   Location: /captcha?captchaType=IMAGE...
+2025-12-19 14:48:18,270 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com...
+2025-12-19 14:48:18,270 - INFO -   X-Apple-I-Request-Id: 9c428a67-dcd0-11f0-a19c-1517e8a4655e...
+2025-12-19 14:48:18,270 - DEBUG - Response Body: {
+  "payload" : {
+    "contentType" : "image/jpeg",
+    "content" : "/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAKADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIW
+2025-12-19 14:48:18,270 - INFO - ============================================================
+
+2025-12-19 14:48:19,275 - ERROR - [eqnvsyvpws@outlook.com] Failed to solve captcha
+2025-12-19 14:48:19,275 - INFO - RESULT: eqnvsyvpws@outlook.com -> ❓ Unknown
+2025-12-19 14:48:20,278 - INFO - 
+############################################################
+2025-12-19 14:48:20,278 - INFO - CHECKING: EnolaPalaspas618@hotmail.com
+2025-12-19 14:48:20,278 - INFO - ############################################################
+2025-12-19 14:48:20,278 - INFO - [EnolaPalaspas618@hotmail.com] Step 1: Loading initial page...
+2025-12-19 14:48:22,016 - INFO - 
+============================================================
+2025-12-19 14:48:22,016 - INFO - STEP: 1. Initial Page
+2025-12-19 14:48:22,016 - INFO - ============================================================
+2025-12-19 14:48:22,016 - INFO - Status Code: 200
+2025-12-19 14:48:22,016 - INFO - URL: https://iforgot.apple.com/password/verify/appleid
+2025-12-19 14:48:22,016 - DEBUG - Response Headers:
+2025-12-19 14:48:22,016 - INFO -   Location: /password/verify/appleid...
+2025-12-19 14:48:22,016 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'X-Apple-I-Web-Token=; Max-Age=...
+2025-12-19 14:48:22,016 - INFO -   Sstt: cRIHydd8%2B5Kbqe4DKNQQip2V012vHjcomyCxg8kfk5DP%2BCP6iE1Y21NCikwpF2SfkRrvUNmEmHfqSj15PDuMzpdhSO42lxsR...
+2025-12-19 14:48:22,016 - INFO -   X-Apple-I-Request-Id: 9e8c0566-dcd0-11f0-9dd1-e96e889cbc8f...
+2025-12-19 14:48:22,016 - INFO - ============================================================
+
+2025-12-19 14:48:22,017 - INFO - [EnolaPalaspas618@hotmail.com] Got sstt token: cRIHydd8%2B5Kbqe4DKNQQip2V012vHjcomyCxg8kfk5DP%2BC...
+2025-12-19 14:48:22,017 - INFO - [EnolaPalaspas618@hotmail.com] Step 2: Getting captcha...
+2025-12-19 14:48:22,319 - INFO - 
+============================================================
+2025-12-19 14:48:22,319 - INFO - STEP: 2. Captcha (attempt 1)
+2025-12-19 14:48:22,319 - INFO - ============================================================
+2025-12-19 14:48:22,319 - INFO - Status Code: 401
+2025-12-19 14:48:22,319 - INFO - URL: https://iforgot.apple.com/captcha?captchaType=IMAGE
+2025-12-19 14:48:22,319 - DEBUG - Response Headers:
+2025-12-19 14:48:22,319 - INFO -   Location: /captcha?captchaType=IMAGE...
+2025-12-19 14:48:22,319 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com...
+2025-12-19 14:48:22,319 - INFO -   X-Apple-I-Request-Id: 9eab9a9a-dcd0-11f0-ac46-bb0fd901151a...
+2025-12-19 14:48:22,319 - DEBUG - Response Body: {
+  "payload" : {
+    "contentType" : "image/jpeg",
+    "content" : "/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAKADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIW
+2025-12-19 14:48:22,320 - INFO - ============================================================
+
+2025-12-19 14:48:23,707 - INFO - 
+============================================================
+2025-12-19 14:48:23,707 - INFO - STEP: 2. Captcha (attempt 2)
+2025-12-19 14:48:23,707 - INFO - ============================================================
+2025-12-19 14:48:23,707 - INFO - Status Code: 401
+2025-12-19 14:48:23,707 - INFO - URL: https://iforgot.apple.com/captcha?captchaType=IMAGE
+2025-12-19 14:48:23,707 - DEBUG - Response Headers:
+2025-12-19 14:48:23,707 - INFO -   Location: /captcha?captchaType=IMAGE...
+2025-12-19 14:48:23,707 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com...
+2025-12-19 14:48:23,707 - INFO -   X-Apple-I-Request-Id: 9f73a5dd-dcd0-11f0-9519-d587dd346737...
+2025-12-19 14:48:23,707 - DEBUG - Response Body: {
+  "payload" : {
+    "contentType" : "image/jpeg",
+    "content" : "/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAKADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIW
+2025-12-19 14:48:23,707 - INFO - ============================================================
+
+2025-12-19 14:48:25,020 - INFO - 
+============================================================
+2025-12-19 14:48:25,020 - INFO - STEP: 2. Captcha (attempt 3)
+2025-12-19 14:48:25,020 - INFO - ============================================================
+2025-12-19 14:48:25,020 - INFO - Status Code: 401
+2025-12-19 14:48:25,020 - INFO - URL: https://iforgot.apple.com/captcha?captchaType=IMAGE
+2025-12-19 14:48:25,020 - DEBUG - Response Headers:
+2025-12-19 14:48:25,020 - INFO -   Location: /captcha?captchaType=IMAGE...
+2025-12-19 14:48:25,020 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com...
+2025-12-19 14:48:25,020 - INFO -   X-Apple-I-Request-Id: a04cc7a0-dcd0-11f0-9002-db2d81311b80...
+2025-12-19 14:48:25,020 - DEBUG - Response Body: {
+  "payload" : {
+    "contentType" : "image/jpeg",
+    "content" : "/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAKADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIW
+2025-12-19 14:48:25,020 - INFO - ============================================================
+
+2025-12-19 14:48:26,025 - ERROR - [EnolaPalaspas618@hotmail.com] Failed to solve captcha
+2025-12-19 14:48:26,026 - INFO - RESULT: EnolaPalaspas618@hotmail.com -> ❓ Unknown
+2025-12-19 14:48:27,028 - INFO - 
+############################################################
+2025-12-19 14:48:27,028 - INFO - CHECKING: wyszkowski18590@outlook.com
+2025-12-19 14:48:27,028 - INFO - ############################################################
+2025-12-19 14:48:27,028 - INFO - [wyszkowski18590@outlook.com] Step 1: Loading initial page...
+2025-12-19 14:48:28,824 - INFO - 
+============================================================
+2025-12-19 14:48:28,824 - INFO - STEP: 1. Initial Page
+2025-12-19 14:48:28,825 - INFO - ============================================================
+2025-12-19 14:48:28,825 - INFO - Status Code: 200
+2025-12-19 14:48:28,825 - INFO - URL: https://iforgot.apple.com/password/verify/appleid
+2025-12-19 14:48:28,825 - DEBUG - Response Headers:
+2025-12-19 14:48:28,825 - INFO -   Location: /password/verify/appleid...
+2025-12-19 14:48:28,825 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'X-Apple-I-Web-Token=; Max-Age=...
+2025-12-19 14:48:28,825 - INFO -   Sstt: MtoYiwd2oocYS9fuKz%2BxlTptLVmBBGvAFaNH2OJHry7S01IqC2nRlMPg1zlDLciKtbmKYM%2Fm7C4ui2w4IPmjmSg%2FHuptE%...
+2025-12-19 14:48:28,825 - INFO -   X-Apple-I-Request-Id: a299ebb1-dcd0-11f0-9002-db2d81311b80...
+2025-12-19 14:48:28,825 - INFO - ============================================================
+
+2025-12-19 14:48:28,825 - INFO - [wyszkowski18590@outlook.com] Got sstt token: MtoYiwd2oocYS9fuKz%2BxlTptLVmBBGvAFaNH2OJHry7S01Iq...
+2025-12-19 14:48:28,825 - INFO - [wyszkowski18590@outlook.com] Step 2: Getting captcha...
+2025-12-19 14:48:29,116 - INFO - 
+============================================================
+2025-12-19 14:48:29,116 - INFO - STEP: 2. Captcha (attempt 1)
+2025-12-19 14:48:29,116 - INFO - ============================================================
+2025-12-19 14:48:29,116 - INFO - Status Code: 401
+2025-12-19 14:48:29,116 - INFO - URL: https://iforgot.apple.com/captcha?captchaType=IMAGE
+2025-12-19 14:48:29,116 - DEBUG - Response Headers:
+2025-12-19 14:48:29,116 - INFO -   Location: /captcha?captchaType=IMAGE...
+2025-12-19 14:48:29,116 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com...
+2025-12-19 14:48:29,116 - INFO -   X-Apple-I-Request-Id: a2bae1f2-dcd0-11f0-a19c-1517e8a4655e...
+2025-12-19 14:48:29,116 - DEBUG - Response Body: {
+  "payload" : {
+    "contentType" : "image/jpeg",
+    "content" : "/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAKADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIW
+2025-12-19 14:48:29,116 - INFO - ============================================================
+
+2025-12-19 14:48:30,402 - INFO - 
+============================================================
+2025-12-19 14:48:30,402 - INFO - STEP: 2. Captcha (attempt 2)
+2025-12-19 14:48:30,402 - INFO - ============================================================
+2025-12-19 14:48:30,402 - INFO - Status Code: 401
+2025-12-19 14:48:30,402 - INFO - URL: https://iforgot.apple.com/captcha?captchaType=IMAGE
+2025-12-19 14:48:30,402 - DEBUG - Response Headers:
+2025-12-19 14:48:30,402 - INFO -   Location: /captcha?captchaType=IMAGE...
+2025-12-19 14:48:30,402 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com...
+2025-12-19 14:48:30,402 - INFO -   X-Apple-I-Request-Id: a381b48e-dcd0-11f0-9dd1-e96e889cbc8f...
+2025-12-19 14:48:30,402 - DEBUG - Response Body: {
+  "payload" : {
+    "contentType" : "image/jpeg",
+    "content" : "/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAKADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIW
+2025-12-19 14:48:30,402 - INFO - ============================================================
+
+2025-12-19 14:48:31,680 - INFO - 
+============================================================
+2025-12-19 14:48:31,680 - INFO - STEP: 2. Captcha (attempt 3)
+2025-12-19 14:48:31,680 - INFO - ============================================================
+2025-12-19 14:48:31,681 - INFO - Status Code: 401
+2025-12-19 14:48:31,681 - INFO - URL: https://iforgot.apple.com/captcha?captchaType=IMAGE
+2025-12-19 14:48:31,681 - DEBUG - Response Headers:
+2025-12-19 14:48:31,681 - INFO -   Location: /captcha?captchaType=IMAGE...
+2025-12-19 14:48:31,681 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com...
+2025-12-19 14:48:31,681 - INFO -   X-Apple-I-Request-Id: a4446803-dcd0-11f0-ac46-bb0fd901151a...
+2025-12-19 14:48:31,681 - DEBUG - Response Body: {
+  "payload" : {
+    "contentType" : "image/jpeg",
+    "content" : "/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAKADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIW
+2025-12-19 14:48:31,681 - INFO - ============================================================
+
+2025-12-19 14:48:32,683 - ERROR - [wyszkowski18590@outlook.com] Failed to solve captcha
+2025-12-19 14:48:32,684 - INFO - RESULT: wyszkowski18590@outlook.com -> ❓ Unknown
+2025-12-19 14:48:32,686 - INFO - Saved 3 accounts to files/check_unknown.txt

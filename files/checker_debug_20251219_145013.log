@@ -1,0 +1,193 @@
+2025-12-19 14:50:13,316 - INFO - 
+############################################################
+2025-12-19 14:50:13,317 - INFO - CHECKING: eqnvsyvpws@outlook.com
+2025-12-19 14:50:13,317 - INFO - ############################################################
+2025-12-19 14:50:13,317 - INFO - [eqnvsyvpws@outlook.com] Step 1: Loading initial page...
+2025-12-19 14:50:14,226 - INFO - 
+============================================================
+2025-12-19 14:50:14,226 - INFO - STEP: 1. Initial Page
+2025-12-19 14:50:14,226 - INFO - ============================================================
+2025-12-19 14:50:14,226 - INFO - Status Code: 200
+2025-12-19 14:50:14,226 - INFO - URL: https://iforgot.apple.com/password/verify/appleid
+2025-12-19 14:50:14,226 - DEBUG - Response Headers:
+2025-12-19 14:50:14,226 - INFO -   Location: /password/verify/appleid...
+2025-12-19 14:50:14,226 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'X-Apple-I-Web-Token=; Max-Age=...
+2025-12-19 14:50:14,226 - INFO -   Sstt: 4iy4xMxYfVb9zVmct8L%2FUpmRp7k9gj6wKZwds%2FUoULkLgcGSy7DotczyyO8HPmKjRuBvjurOWXabKRv0i2ULo%2FlQw6tURs...
+2025-12-19 14:50:14,226 - INFO -   X-Apple-I-Request-Id: e169f04a-dcd0-11f0-9dd1-e96e889cbc8f...
+2025-12-19 14:50:14,226 - INFO - ============================================================
+
+2025-12-19 14:50:14,227 - INFO - [eqnvsyvpws@outlook.com] Got sstt token: 4iy4xMxYfVb9zVmct8L/UpmRp7k9gj6wKZwds/UoULkLgcGSy7...
+2025-12-19 14:50:14,227 - INFO - [eqnvsyvpws@outlook.com] Step 2: Getting captcha...
+2025-12-19 14:50:14,518 - INFO - 
+============================================================
+2025-12-19 14:50:14,518 - INFO - STEP: 2. Captcha (attempt 1)
+2025-12-19 14:50:14,518 - INFO - ============================================================
+2025-12-19 14:50:14,518 - INFO - Status Code: 401
+2025-12-19 14:50:14,518 - INFO - URL: https://iforgot.apple.com/captcha?captchaType=IMAGE
+2025-12-19 14:50:14,518 - DEBUG - Response Headers:
+2025-12-19 14:50:14,518 - INFO -   Location: /captcha?captchaType=IMAGE...
+2025-12-19 14:50:14,518 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com...
+2025-12-19 14:50:14,518 - INFO -   X-Apple-I-Request-Id: e18e1a6e-dcd0-11f0-9dd1-e96e889cbc8f...
+2025-12-19 14:50:14,518 - DEBUG - Response Body: {
+  "payload" : {
+    "contentType" : "image/jpeg",
+    "content" : "/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAKADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIW
+2025-12-19 14:50:14,518 - INFO - ============================================================
+
+2025-12-19 14:50:14,591 - DEBUG - Starting new HTTPS connection (1): api.yescaptcha.com:443
+2025-12-19 14:50:15,383 - DEBUG - https://api.yescaptcha.com:443 "POST /createTask HTTP/1.1" 200 None
+2025-12-19 14:50:16,115 - DEBUG - https://api.yescaptcha.com:443 "POST /getTaskResult HTTP/1.1" 200 None
+2025-12-19 14:50:16,116 - INFO - [eqnvsyvpws@outlook.com] Captcha solved: 429E8
+2025-12-19 14:50:16,116 - INFO - [eqnvsyvpws@outlook.com] Step 3: Verifying Apple ID...
+2025-12-19 14:50:16,428 - INFO - 
+============================================================
+2025-12-19 14:50:16,428 - INFO - STEP: 3. Verify Apple ID
+2025-12-19 14:50:16,428 - INFO - ============================================================
+2025-12-19 14:50:16,428 - INFO - Status Code: 400
+2025-12-19 14:50:16,428 - INFO - URL: https://iforgot.apple.com/password/verify/appleid
+2025-12-19 14:50:16,428 - DEBUG - Response Headers:
+2025-12-19 14:50:16,428 - INFO -   Location: /password/verify/appleid...
+2025-12-19 14:50:16,428 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com...
+2025-12-19 14:50:16,428 - INFO -   X-Apple-I-Request-Id: e2ae0999-dcd0-11f0-be78-531d35ef6ee8...
+2025-12-19 14:50:16,428 - DEBUG - Response Body: {
+  "service_errors" : [ {
+    "code" : "captchaAnswer.Invalid",
+    "message" : "Please enter the characters you see or hear to continue.",
+    "path" : "captcha"
+  } ],
+  "hasError" : true
+}
+2025-12-19 14:50:16,428 - INFO - ============================================================
+
+2025-12-19 14:50:16,428 - INFO - [eqnvsyvpws@outlook.com] Error code: captchaAnswer.Invalid, message: Please enter the characters you see or hear to continue.
+2025-12-19 14:50:16,428 - WARNING - [eqnvsyvpws@outlook.com] Unknown error: {'service_errors': [{'code': 'captchaAnswer.Invalid', 'message': 'Please enter the characters you see or hear to continue.', 'path': 'captcha'}], 'hasError': True}
+2025-12-19 14:50:16,428 - INFO - RESULT: eqnvsyvpws@outlook.com -> ❓ Unknown
+2025-12-19 14:50:17,432 - INFO - 
+############################################################
+2025-12-19 14:50:17,432 - INFO - CHECKING: EnolaPalaspas618@hotmail.com
+2025-12-19 14:50:17,432 - INFO - ############################################################
+2025-12-19 14:50:17,432 - INFO - [EnolaPalaspas618@hotmail.com] Step 1: Loading initial page...
+2025-12-19 14:50:18,273 - INFO - 
+============================================================
+2025-12-19 14:50:18,273 - INFO - STEP: 1. Initial Page
+2025-12-19 14:50:18,273 - INFO - ============================================================
+2025-12-19 14:50:18,273 - INFO - Status Code: 200
+2025-12-19 14:50:18,273 - INFO - URL: https://iforgot.apple.com/password/verify/appleid
+2025-12-19 14:50:18,273 - DEBUG - Response Headers:
+2025-12-19 14:50:18,273 - INFO -   Location: /password/verify/appleid...
+2025-12-19 14:50:18,273 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'X-Apple-I-Web-Token=; Max-Age=...
+2025-12-19 14:50:18,273 - INFO -   Sstt: wMPVo1JD%2Bxe1SiCvPCQEMfMfrpEPBq%2Bh%2B71bWMSWeedNT4mwy8VzBtuVgdPmZ2dGttpNk8OT%2Bt%2F9OmQIGiZVEMJoHG...
+2025-12-19 14:50:18,273 - INFO -   X-Apple-I-Request-Id: e3cff443-dcd0-11f0-84a2-a18e44d15ddc...
+2025-12-19 14:50:18,273 - INFO - ============================================================
+
+2025-12-19 14:50:18,273 - INFO - [EnolaPalaspas618@hotmail.com] Got sstt token: wMPVo1JD%2Bxe1SiCvPCQEMfMfrpEPBq%2Bh%2B71bWMSWeedN...
+2025-12-19 14:50:18,273 - INFO - [EnolaPalaspas618@hotmail.com] Step 2: Getting captcha...
+2025-12-19 14:50:18,581 - INFO - 
+============================================================
+2025-12-19 14:50:18,581 - INFO - STEP: 2. Captcha (attempt 1)
+2025-12-19 14:50:18,581 - INFO - ============================================================
+2025-12-19 14:50:18,581 - INFO - Status Code: 401
+2025-12-19 14:50:18,581 - INFO - URL: https://iforgot.apple.com/captcha?captchaType=IMAGE
+2025-12-19 14:50:18,581 - DEBUG - Response Headers:
+2025-12-19 14:50:18,581 - INFO -   Location: /captcha?captchaType=IMAGE...
+2025-12-19 14:50:18,581 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com...
+2025-12-19 14:50:18,581 - INFO -   X-Apple-I-Request-Id: e3f72b4b-dcd0-11f0-9519-d587dd346737...
+2025-12-19 14:50:18,581 - DEBUG - Response Body: {
+  "payload" : {
+    "contentType" : "image/jpeg",
+    "content" : "/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAKADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIW
+2025-12-19 14:50:18,581 - INFO - ============================================================
+
+2025-12-19 14:50:18,582 - DEBUG - Starting new HTTPS connection (1): api.yescaptcha.com:443
+2025-12-19 14:50:19,332 - DEBUG - https://api.yescaptcha.com:443 "POST /createTask HTTP/1.1" 200 None
+2025-12-19 14:50:20,099 - DEBUG - https://api.yescaptcha.com:443 "POST /getTaskResult HTTP/1.1" 200 None
+2025-12-19 14:50:20,100 - INFO - [EnolaPalaspas618@hotmail.com] Captcha solved: 752KM
+2025-12-19 14:50:20,100 - INFO - [EnolaPalaspas618@hotmail.com] Step 3: Verifying Apple ID...
+2025-12-19 14:50:20,334 - INFO - 
+============================================================
+2025-12-19 14:50:20,334 - INFO - STEP: 3. Verify Apple ID
+2025-12-19 14:50:20,334 - INFO - ============================================================
+2025-12-19 14:50:20,334 - INFO - Status Code: 400
+2025-12-19 14:50:20,334 - INFO - URL: https://iforgot.apple.com/password/verify/appleid
+2025-12-19 14:50:20,334 - DEBUG - Response Headers:
+2025-12-19 14:50:20,334 - INFO -   Location: /password/verify/appleid...
+2025-12-19 14:50:20,334 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com...
+2025-12-19 14:50:20,334 - INFO -   X-Apple-I-Request-Id: e50e1957-dcd0-11f0-be78-531d35ef6ee8...
+2025-12-19 14:50:20,334 - DEBUG - Response Body: {
+  "service_errors" : [ {
+    "code" : "captchaAnswer.Invalid",
+    "message" : "Please enter the characters you see or hear to continue.",
+    "path" : "captcha"
+  } ],
+  "hasError" : true
+}
+2025-12-19 14:50:20,334 - INFO - ============================================================
+
+2025-12-19 14:50:20,334 - INFO - [EnolaPalaspas618@hotmail.com] Error code: captchaAnswer.Invalid, message: Please enter the characters you see or hear to continue.
+2025-12-19 14:50:20,334 - WARNING - [EnolaPalaspas618@hotmail.com] Unknown error: {'service_errors': [{'code': 'captchaAnswer.Invalid', 'message': 'Please enter the characters you see or hear to continue.', 'path': 'captcha'}], 'hasError': True}
+2025-12-19 14:50:20,334 - INFO - RESULT: EnolaPalaspas618@hotmail.com -> ❓ Unknown
+2025-12-19 14:50:21,338 - INFO - 
+############################################################
+2025-12-19 14:50:21,338 - INFO - CHECKING: wyszkowski18590@outlook.com
+2025-12-19 14:50:21,338 - INFO - ############################################################
+2025-12-19 14:50:21,338 - INFO - [wyszkowski18590@outlook.com] Step 1: Loading initial page...
+2025-12-19 14:50:22,086 - INFO - 
+============================================================
+2025-12-19 14:50:22,086 - INFO - STEP: 1. Initial Page
+2025-12-19 14:50:22,086 - INFO - ============================================================
+2025-12-19 14:50:22,086 - INFO - Status Code: 200
+2025-12-19 14:50:22,086 - INFO - URL: https://iforgot.apple.com/password/verify/appleid
+2025-12-19 14:50:22,086 - DEBUG - Response Headers:
+2025-12-19 14:50:22,086 - INFO -   Location: /password/verify/appleid...
+2025-12-19 14:50:22,086 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'X-Apple-I-Web-Token=; Max-Age=...
+2025-12-19 14:50:22,086 - INFO -   Sstt: UdsOfGKKLsXimpTrPsSs%2BLCZVS7jj%2BVOUHnBYbocy4le2%2F0CnFMqHBVTWZrcspB1QyW70RxG%2BgvX%2BHNvmZ%2FTl%2B...
+2025-12-19 14:50:22,086 - INFO -   X-Apple-I-Request-Id: e61d3fb9-dcd0-11f0-9dd1-e96e889cbc8f...
+2025-12-19 14:50:22,086 - INFO - ============================================================
+
+2025-12-19 14:50:22,086 - INFO - [wyszkowski18590@outlook.com] Got sstt token: UdsOfGKKLsXimpTrPsSs%2BLCZVS7jj%2BVOUHnBYbocy4le2/...
+2025-12-19 14:50:22,087 - INFO - [wyszkowski18590@outlook.com] Step 2: Getting captcha...
+2025-12-19 14:50:22,373 - INFO - 
+============================================================
+2025-12-19 14:50:22,374 - INFO - STEP: 2. Captcha (attempt 1)
+2025-12-19 14:50:22,374 - INFO - ============================================================
+2025-12-19 14:50:22,374 - INFO - Status Code: 401
+2025-12-19 14:50:22,374 - INFO - URL: https://iforgot.apple.com/captcha?captchaType=IMAGE
+2025-12-19 14:50:22,374 - DEBUG - Response Headers:
+2025-12-19 14:50:22,374 - INFO -   Location: /captcha?captchaType=IMAGE...
+2025-12-19 14:50:22,374 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com...
+2025-12-19 14:50:22,374 - INFO -   X-Apple-I-Request-Id: e63e0d9f-dcd0-11f0-9002-db2d81311b80...
+2025-12-19 14:50:22,374 - DEBUG - Response Body: {
+  "payload" : {
+    "contentType" : "image/jpeg",
+    "content" : "/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAKADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIW
+2025-12-19 14:50:22,374 - INFO - ============================================================
+
+2025-12-19 14:50:22,375 - DEBUG - Starting new HTTPS connection (1): api.yescaptcha.com:443
+2025-12-19 14:50:23,031 - DEBUG - https://api.yescaptcha.com:443 "POST /createTask HTTP/1.1" 200 None
+2025-12-19 14:50:23,805 - DEBUG - https://api.yescaptcha.com:443 "POST /getTaskResult HTTP/1.1" 200 None
+2025-12-19 14:50:23,806 - INFO - [wyszkowski18590@outlook.com] Captcha solved: 2KHU
+2025-12-19 14:50:23,806 - INFO - [wyszkowski18590@outlook.com] Step 3: Verifying Apple ID...
+2025-12-19 14:50:24,039 - INFO - 
+============================================================
+2025-12-19 14:50:24,039 - INFO - STEP: 3. Verify Apple ID
+2025-12-19 14:50:24,039 - INFO - ============================================================
+2025-12-19 14:50:24,039 - INFO - Status Code: 400
+2025-12-19 14:50:24,039 - INFO - URL: https://iforgot.apple.com/password/verify/appleid
+2025-12-19 14:50:24,039 - DEBUG - Response Headers:
+2025-12-19 14:50:24,039 - INFO -   Location: /password/verify/appleid...
+2025-12-19 14:50:24,039 - INFO -   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com...
+2025-12-19 14:50:24,039 - INFO -   X-Apple-I-Request-Id: e7437020-dcd0-11f0-84a2-a18e44d15ddc...
+2025-12-19 14:50:24,039 - DEBUG - Response Body: {
+  "service_errors" : [ {
+    "code" : "captchaAnswer.Invalid",
+    "message" : "Please enter the characters you see or hear to continue.",
+    "path" : "captcha"
+  } ],
+  "hasError" : true
+}
+2025-12-19 14:50:24,039 - INFO - ============================================================
+
+2025-12-19 14:50:24,039 - INFO - [wyszkowski18590@outlook.com] Error code: captchaAnswer.Invalid, message: Please enter the characters you see or hear to continue.
+2025-12-19 14:50:24,039 - WARNING - [wyszkowski18590@outlook.com] Unknown error: {'service_errors': [{'code': 'captchaAnswer.Invalid', 'message': 'Please enter the characters you see or hear to continue.', 'path': 'captcha'}], 'hasError': True}
+2025-12-19 14:50:24,039 - INFO - RESULT: wyszkowski18590@outlook.com -> ❓ Unknown
+2025-12-19 14:50:24,040 - INFO - Saved 3 accounts to files/check_unknown.txt

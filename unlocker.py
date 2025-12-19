@@ -4,6 +4,7 @@ import json
 import random
 import hashlib
 import logging
+import string
 import tls_client
 import urllib.parse
 from colorama import Fore
@@ -27,6 +28,52 @@ logger = logging.getLogger(__name__)
 
 with open("files/settings.json")as f:
     settings = json.load(f)
+
+def generate_password(email, old_password=None):
+    """
+    Generate simple, easy-to-type passwords like:
+    AAAaaab82, BBBccc123, XXXyyy456
+    
+    Requirements:
+    - Minimum 8 characters
+    - At least 1 uppercase letter
+    - At least 1 lowercase letter  
+    - At least 1 digit
+    - Does not contain email/Apple ID
+    - Does not match old password
+    """
+    # Simple patterns with repeating characters
+    patterns = [
+        # AAAbbb82
+        lambda: random.choice('ABCDEFGHJKLMNPQRSTUVWXYZ') * 3 + random.choice('abcdefghjkmnpqrstuvwxyz') * 3 + str(random.randint(10, 99)),
+        # AAAbbb123
+        lambda: random.choice('ABCDEFGHJKLMNPQRSTUVWXYZ') * 3 + random.choice('abcdefghjkmnpqrstuvwxyz') * 3 + str(random.randint(100, 999)),
+        # AAbbCC12
+        lambda: random.choice('ABCDEFGHJKLMNPQRSTUVWXYZ') * 2 + random.choice('abcdefghjkmnpqrstuvwxyz') * 2 + random.choice('ABCDEFGHJKLMNPQRSTUVWXYZ') * 2 + str(random.randint(10, 99)),
+        # Abbbb1X23
+        lambda: random.choice('ABCDEFGHJKLMNPQRSTUVWXYZ') + random.choice('abcdefghjkmnpqrstuvwxyz') * 4 + random.choice('ABCDEFGHJKLMNPQRSTUVWXYZ') + str(random.randint(100, 999)),
+    ]
+    
+    email_parts = email.lower().split('@')[0]
+    
+    for _ in range(50):
+        password = random.choice(patterns)()
+        
+        if email_parts in password.lower():
+            continue
+        if old_password and password == old_password:
+            continue
+            
+        return password
+    
+    return f"AAAbbb{random.randint(100, 999)}"
+
+def save_generated_password(email, new_password):
+    """Save generated password to passwords log file"""
+    with lock:
+        with open("files/passwords.txt", "a+", encoding='utf-8') as f:
+            f.write(f"{email},{new_password}\n")
+
 def remove_line_containing_text(file_path, target_text):
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
@@ -99,8 +146,9 @@ print(f"{Fore.GREEN}[+] Apple ID Unlocker Started{Fore.RESET}")
 class unlocker():
 
     def __init__(self) -> None:
-        pass
-    def unlock(self,data_email):
+        self.max_retries = 3  # Maximum retry attempts for session timeout
+        
+    def unlock(self, data_email, retry_count=0):
         try:
 
 
@@ -109,7 +157,12 @@ class unlocker():
             self.data_email =data_email
             self.email = data_email.split(',')[0]
             self.password = data_email.split(',')[1]
-            self.new_password =  settings['new_password']
+            # Generate unique password or use from settings
+            if settings.get('auto_generate_password', False):
+                self.new_password = generate_password(self.email, self.password)
+                logger.info(f"[{self.email}] Generated new password: {self.new_password}")
+            else:
+                self.new_password = settings['new_password']
 
 
             """ SETUP """
@@ -188,18 +241,86 @@ class unlocker():
                 else:
                     break
             if sendAppleid.status_code == 302:
-                """ * Get New SSTT * """
+                """ * Get Recovery Options * """
+                logger.info(f"[{self.email}] Step: Getting recovery options...")
+                
+                sendRecoveryOptions = self.session.get(f'https://iforgot.apple.com{sendAppleid.headers["Location"]}',headers=self.headers)
+                
+                # Update sstt from response
+                if 'Sstt' in sendRecoveryOptions.headers:
+                    self.headers['sstt'] = sendRecoveryOptions.headers['Sstt']
+                    logger.info(f"[{self.email}] Got Sstt from recovery options")
+                
+                # Also check JSON response for sstt
+                try:
+                    recovery_data = sendRecoveryOptions.json()
+                    if 'sstt' in recovery_data:
+                        self.headers['sstt'] = urllib.parse.quote(recovery_data['sstt'])
+                        logger.info(f"[{self.email}] Got Sstt from recovery options JSON")
+                except:
+                    pass
+                
+                """ * Select reset_password option * """
+                logger.info(f"[{self.email}] Step: Selecting reset_password option...")
+                
+                sendSelectOption = self.session.post('https://iforgot.apple.com/recovery/options',headers=self.headers,json={"option": "reset_password"})
+                
+                if 'Sstt' in sendSelectOption.headers:
+                    self.headers['sstt'] = sendSelectOption.headers['Sstt']
+                    logger.info(f"[{self.email}] Got Sstt from select option")
+                
+                # Follow redirect to authenticationmethod
+                if sendSelectOption.status_code == 302 and 'Location' in sendSelectOption.headers:
+                    logger.info(f"[{self.email}] Step: Getting authentication method page...")
+                    
+                    sendAuthMethodGET = self.session.get(f'https://iforgot.apple.com{sendSelectOption.headers["Location"]}',headers=self.headers)
+                    
+                    if 'Sstt' in sendAuthMethodGET.headers:
+                        self.headers['sstt'] = sendAuthMethodGET.headers['Sstt']
+                        logger.info(f"[{self.email}] Got Sstt from auth method GET")
+                    
+                    # Extract sstt from JSON if present
+                    try:
+                        auth_data = sendAuthMethodGET.json()
+                        if 'sstt' in auth_data:
+                            self.headers['sstt'] = urllib.parse.quote(auth_data['sstt'])
+                            logger.info(f"[{self.email}] Got Sstt from auth method JSON")
+                    except:
+                        pass
+                else:
+                    # If no redirect, try to get auth method page directly
+                    logger.info(f"[{self.email}] No redirect from select option (status: {sendSelectOption.status_code}), trying direct GET...")
+                    sendAuthMethodGET = self.session.get('https://iforgot.apple.com/password/authenticationmethod',headers=self.headers)
+                    
+                    if 'Sstt' in sendAuthMethodGET.headers:
+                        self.headers['sstt'] = sendAuthMethodGET.headers['Sstt']
+                        logger.info(f"[{self.email}] Got Sstt from direct auth method GET")
+                    
+                    try:
+                        auth_data = sendAuthMethodGET.json()
+                        if 'sstt' in auth_data:
+                            self.headers['sstt'] = urllib.parse.quote(auth_data['sstt'])
+                            logger.info(f"[{self.email}] Got Sstt from direct auth method JSON")
+                    except:
+                        pass
 
-                sendSSTT = self.session.get(f'https://iforgot.apple.com{sendAppleid.headers["Location"]}',headers=self.headers)
+                """ * Send authenticationmethod - select questions * """
+                logger.info(f"[{self.email}] Step: Selecting questions auth method...")
 
-                """ * Send authenticationmethod * """
-
-                sendAuthenticationmethod = self.session.post(f'https://iforgot.apple.com{sendSSTT.headers["Location"]}',headers=self.headers,json={"type":"questions"})
-
+                sendAuthenticationmethod = self.session.post('https://iforgot.apple.com/password/authenticationmethod',headers=self.headers,json={"type":"questions"})
+                
+                if 'Sstt' in sendAuthenticationmethod.headers:
+                    self.headers['sstt'] = sendAuthenticationmethod.headers['Sstt']
+                    logger.info(f"[{self.email}] Got Sstt from auth method POST")
 
                 """ * Send Birthday * """
-
-                sendBirthdayGET = self.session.get(f'https://iforgot.apple.com{sendAuthenticationmethod.headers["Location"]}',headers=self.headers)
+                logger.info(f"[{self.email}] Step: Getting birthday page...")
+                
+                # Follow redirect from auth method if present
+                if sendAuthenticationmethod.status_code == 302 and 'Location' in sendAuthenticationmethod.headers:
+                    sendBirthdayGET = self.session.get(f'https://iforgot.apple.com{sendAuthenticationmethod.headers["Location"]}',headers=self.headers)
+                else:
+                    sendBirthdayGET = self.session.get('https://iforgot.apple.com/password/verify/birthday',headers=self.headers)
                 
                 # Check if Sstt header exists
                 if 'Sstt' in sendBirthdayGET.headers:
@@ -210,7 +331,6 @@ class unlocker():
                     logger.error(f"[{self.email}] Available headers: {list(sendBirthdayGET.headers.keys())}")
                     print(f"{Fore.RED}ERROR  'Sstt' - Missing Sstt header in birthday response{Fore.RESET}")
                     print(f"{Fore.RED} [ + ] {self.email} ==> ERROR While unlock ==>{Fore.RESET}")
-                    remove_line_containing_text('files/Accounts.txt',data_email)
                     with lock:
                         with open("files/error.txt","a+")as f :
                             f.write(f'{self.data_email} - Missing Sstt header in birthday response\n')
@@ -227,7 +347,6 @@ class unlocker():
 
                 if sendBirthdayPOST.status_code == 410:
                     print(f"{Fore.RED} [ + ] {self.email} ==> ERROR While unlock ==> TO many Attempts ERORR")
-                    remove_line_containing_text('files/Accounts.txt',data_email)
                     with lock:
                         with open("files/error.txt","a+")as f :
                             f.write(f'{self.data_email}\n')     
@@ -273,9 +392,17 @@ class unlocker():
                         if response_json == {}:
                             # Check if it's a session timeout
                             if 'session/timeout' in str(sendQuestionsGET.url):
-                                logger.error(f"[{self.email}] SESSION TIMEOUT DETECTED")
+                                logger.error(f"[{self.email}] SESSION TIMEOUT DETECTED (attempt {retry_count + 1}/{self.max_retries})")
                                 logger.error(f"[{self.email}] Apple session expired before reaching security questions")
-                                print(f"{Fore.RED}ERROR - Session timeout{Fore.RESET}")
+                                
+                                # Retry logic
+                                if retry_count < self.max_retries - 1:
+                                    wait_time = (retry_count + 1) * 10  # 10s, 20s, 30s
+                                    print(f"{Fore.YELLOW}[RETRY] Session timeout - waiting {wait_time}s before retry {retry_count + 2}/{self.max_retries}{Fore.RESET}")
+                                    time.sleep(wait_time)
+                                    return self.unlock(data_email, retry_count + 1)  # Recursive retry
+                                
+                                print(f"{Fore.RED}ERROR - Session timeout (all {self.max_retries} attempts failed){Fore.RESET}")
                                 print(f"{Fore.YELLOW}Suggestion: This is likely due to Apple's security measures{Fore.RESET}")
                                 print(f"{Fore.YELLOW}Try again later or check account status{Fore.RESET}")
                             else:
@@ -290,7 +417,6 @@ class unlocker():
                             print(f"{Fore.RED}ERROR  'questions'{Fore.RESET}")
                             
                         print(f"{Fore.RED} [ + ] {self.email} ==> ERROR While unlock ==>{Fore.RESET}")
-                        remove_line_containing_text('files/Accounts.txt',data_email)
                         with lock:
                             with open("files/error.txt","a+")as f :
                                 f.write(f'{self.data_email} - No questions in response (empty JSON)\n')
@@ -299,7 +425,6 @@ class unlocker():
                     if len(response_json['questions']) < 2:
                         logger.error(f"[{self.email}] Not enough questions in response: {len(response_json['questions'])}")
                         print(f"{Fore.RED}[ERROR] Not enough questions received{Fore.RESET}")
-                        remove_line_containing_text('files/Accounts.txt',data_email)
                         with lock:
                             with open("files/error.txt","a+")as f :
                                 f.write(f'{self.data_email} - Not enough questions\n')
@@ -317,7 +442,6 @@ class unlocker():
                     logger.error(f"[{self.email}] Response text: {sendQuestionsGET.text}")
                     print(f"{Fore.RED}ERROR  'questions'{Fore.RESET}")
                     print(f"{Fore.RED} [ + ] {self.email} ==> ERROR While unlock ==>{Fore.RESET}")
-                    remove_line_containing_text('files/Accounts.txt',data_email)
                     with lock:
                         with open("files/error.txt","a+")as f :
                             f.write(f'{self.data_email} - Questions parsing error: {e}\n')
@@ -346,7 +470,6 @@ class unlocker():
                 if questions_missing:
                     logger.error(f"[{self.email}] Skipping account due to missing question mappings: {questions_missing}")
                     print(f"{Fore.RED}[ERROR] {self.email} - Missing question mappings, skipping account{Fore.RESET}")
-                    remove_line_containing_text('files/Accounts.txt',data_email)
                     with lock:
                         with open("files/error.txt","a+")as f :
                             f.write(f'{self.data_email} - Missing question mappings: {questions_missing}\n')
@@ -402,7 +525,6 @@ class unlocker():
                     logger.error(f"[{self.email}] KeyError when building payload: {e}")
                     logger.error(f"[{self.email}] Missing question in qus mapping: {e}")
                     print(f"{Fore.RED}[ERROR] {self.email} - Question mapping error: {e}{Fore.RESET}")
-                    remove_line_containing_text('files/Accounts.txt',data_email)
                     with lock:
                         with open("files/error.txt","a+")as f :
                             f.write(f'{self.data_email} - Question mapping error: {e}\n')
@@ -411,7 +533,6 @@ class unlocker():
                     logger.error(f"[{self.email}] IndexError when accessing answer: {e}")
                     logger.error(f"[{self.email}] Account data: {self.data_email}")
                     print(f"{Fore.RED}[ERROR] {self.email} - Answer index error: {e}{Fore.RESET}")
-                    remove_line_containing_text('files/Accounts.txt',data_email)
                     with lock:
                         with open("files/error.txt","a+")as f :
                             f.write(f'{self.data_email} - Answer index error: {e}\n')
@@ -445,7 +566,6 @@ class unlocker():
                     print(f"{Fore.RED}     Question 1: '{question1}' -> Answer: '{self.data_email.split(',')[qus[question1]]}'")
                     print(f"{Fore.RED}     Question 2: '{question2}' -> Answer: '{self.data_email.split(',')[qus[question2]]}'")
                     print(f"{Fore.YELLOW}     Suggestion: Check if the answers in Accounts.txt match your actual security question answers{Fore.RESET}")
-                    remove_line_containing_text('files/Accounts.txt',data_email)
                     with lock:
                         with open("files/error.txt","a+")as f :
                             f.write(f'{self.data_email} - Invalid security answers (400)\n')    
@@ -468,7 +588,6 @@ class unlocker():
                         logger.error(f"[{self.email}] Available headers: {list(sendResetGET.headers.keys())}")
                         print(f"{Fore.RED}ERROR  'Sstt' - Missing Sstt header in reset response{Fore.RESET}")
                         print(f"{Fore.RED} [ + ] {self.email} ==> ERROR While unlock ==>{Fore.RESET}")
-                        remove_line_containing_text('files/Accounts.txt',data_email)
                         with lock:
                             with open("files/error.txt","a+")as f :
                                 f.write(f'{self.data_email} - Missing Sstt header in reset response\n')
@@ -479,13 +598,14 @@ class unlocker():
                     if sendResetPassword.status_code ==260:
                         time_ = int(time.time()) - int(start)
                         print(f"{Fore.GREEN} [ + ] {self.email} ==> Was Unlocked Successfuly in ==> {time_}s ")
-                        remove_line_containing_text('files/Accounts.txt',data_email)
+                        print(f"{Fore.CYAN} [ + ] New password: {self.new_password}{Fore.RESET}")
                         with lock:
                             with open("files/Success.txt","a+")as f :
                                 f.write(f'{self.data_email.replace(self.password,self.new_password)}\n')
+                        # Save generated password to separate file
+                        save_generated_password(self.email, self.new_password)
                     else:
                         print(f"{Fore.RED} [ + ] {self.email} ==> ERROR While unlock ==>")
-                        remove_line_containing_text('files/Accounts.txt',data_email)
                         with lock:
                             with open("files/error.txt","a+")as f :
                                 f.write(f'{self.data_email}\n')     
@@ -493,7 +613,6 @@ class unlocker():
         except Exception as e :
             print("ERROR ",e)
             print(f"{Fore.RED} [ + ] {self.email} ==> ERROR While unlock ==>")
-            remove_line_containing_text('files/Accounts.txt',data_email)
             with lock:
                 with open("files/error.txt","a+")as f :
                     f.write(f'{self.data_email}\n')  

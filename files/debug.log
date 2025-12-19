@@ -1,60 +1,69 @@
-2025-08-14 17:48:30,101 - INFO - [vhdhqerdf@outlook.com] Got Sstt token from birthday GET
-2025-08-14 17:48:30,522 - WARNING - [vhdhqerdf@outlook.com] No Sstt header in birthday POST response - continuing with existing token
-2025-08-14 17:48:30,523 - INFO - [vhdhqerdf@outlook.com] Available headers: ['Connection', 'Content-Encoding', 'Content-Language', 'Content-Security-Policy', 'Date', 'Host', 'Location', 'Referrer-Policy', 'Server', 'Set-Cookie', 'Strict-Transport-Security', 'Vary', 'X-Apple-I-Request-Id', 'X-Buildversion', 'X-Content-Type-Options', 'X-Frame-Options', 'X-Xss-Protection']
-2025-08-14 17:48:30,917 - WARNING - [vhdhqerdf@outlook.com] No Sstt header in questions GET response - continuing with existing token
-2025-08-14 17:48:30,918 - INFO - [vhdhqerdf@outlook.com] Available headers: ['Cache-Control', 'Connection', 'Content-Encoding', 'Content-Language', 'Content-Location', 'Content-Security-Policy', 'Content-Type', 'Date', 'Expires', 'Host', 'Location', 'Pragma', 'Referrer-Policy', 'Server', 'Set-Cookie', 'Strict-Transport-Security', 'Vary', 'X-Apple-I-Request-Id', 'X-Buildversion', 'X-Content-Type-Options', 'X-Frame-Options', 'X-Xss-Protection']
-2025-08-14 17:48:30,918 - INFO - [vhdhqerdf@outlook.com] Questions response: {}
-2025-08-14 17:48:30,918 - ERROR - [vhdhqerdf@outlook.com] No 'questions' key in response: {}
-2025-08-14 17:50:22,672 - INFO - [vhdhqerdf@outlook.com] Got Sstt token from birthday GET
-2025-08-14 17:50:23,149 - WARNING - [vhdhqerdf@outlook.com] No Sstt header in birthday POST response - continuing with existing token
-2025-08-14 17:50:23,149 - INFO - [vhdhqerdf@outlook.com] Available headers: ['Connection', 'Content-Encoding', 'Content-Language', 'Content-Security-Policy', 'Date', 'Host', 'Location', 'Referrer-Policy', 'Server', 'Set-Cookie', 'Strict-Transport-Security', 'Vary', 'X-Apple-I-Request-Id', 'X-Buildversion', 'X-Content-Type-Options', 'X-Frame-Options', 'X-Xss-Protection']
-2025-08-14 17:50:23,499 - WARNING - [vhdhqerdf@outlook.com] No Sstt header in questions GET response - continuing with existing token
-2025-08-14 17:50:23,499 - INFO - [vhdhqerdf@outlook.com] Available headers: ['Cache-Control', 'Connection', 'Content-Encoding', 'Content-Language', 'Content-Location', 'Content-Security-Policy', 'Content-Type', 'Date', 'Expires', 'Host', 'Location', 'Pragma', 'Referrer-Policy', 'Server', 'Set-Cookie', 'Strict-Transport-Security', 'Vary', 'X-Apple-I-Request-Id', 'X-Buildversion', 'X-Content-Type-Options', 'X-Frame-Options', 'X-Xss-Protection']
-2025-08-14 17:50:23,499 - INFO - [vhdhqerdf@outlook.com] Questions response: {}
-2025-08-14 17:50:23,499 - ERROR - [vhdhqerdf@outlook.com] No 'questions' key in response: {}
-2025-08-14 17:50:23,499 - ERROR - [vhdhqerdf@outlook.com] Questions GET status code: 200
-2025-08-14 17:50:23,499 - ERROR - [vhdhqerdf@outlook.com] Questions GET URL: https://iforgot.apple.com/session/timeout?
-2025-08-14 17:50:23,499 - ERROR - [vhdhqerdf@outlook.com] Empty JSON response - possible causes:
-2025-08-14 17:50:23,499 - ERROR - [vhdhqerdf@outlook.com] 1. Incorrect birthday data
-2025-08-14 17:50:23,499 - ERROR - [vhdhqerdf@outlook.com] 2. Account locked/blocked
-2025-08-14 17:50:23,500 - ERROR - [vhdhqerdf@outlook.com] 3. Too many attempts
-2025-08-14 17:50:23,500 - ERROR - [vhdhqerdf@outlook.com] 4. Apple API changes
-2025-08-14 17:53:03,816 - INFO - [vhdhqerdf@outlook.com] Got Sstt token from birthday GET
-2025-08-14 17:53:04,076 - WARNING - [vhdhqerdf@outlook.com] No Sstt header in birthday POST response - continuing with existing token
-2025-08-14 17:53:04,076 - INFO - [vhdhqerdf@outlook.com] Available headers: ['Connection', 'Content-Encoding', 'Content-Language', 'Content-Security-Policy', 'Date', 'Host', 'Location', 'Referrer-Policy', 'Server', 'Set-Cookie', 'Strict-Transport-Security', 'Vary', 'X-Apple-I-Request-Id', 'X-Buildversion', 'X-Content-Type-Options', 'X-Frame-Options', 'X-Xss-Protection']
-2025-08-14 17:53:04,500 - WARNING - [vhdhqerdf@outlook.com] No Sstt header in questions GET response - continuing with existing token
-2025-08-14 17:53:04,500 - INFO - [vhdhqerdf@outlook.com] Available headers: ['Cache-Control', 'Connection', 'Content-Encoding', 'Content-Language', 'Content-Location', 'Content-Security-Policy', 'Content-Type', 'Date', 'Expires', 'Host', 'Location', 'Pragma', 'Referrer-Policy', 'Server', 'Set-Cookie', 'Strict-Transport-Security', 'Vary', 'X-Apple-I-Request-Id', 'X-Buildversion', 'X-Content-Type-Options', 'X-Frame-Options', 'X-Xss-Protection']
-2025-08-14 17:53:04,500 - INFO - [vhdhqerdf@outlook.com] Questions response: {}
-2025-08-14 17:53:04,500 - ERROR - [vhdhqerdf@outlook.com] No 'questions' key in response: {}
-2025-08-14 17:53:04,501 - ERROR - [vhdhqerdf@outlook.com] Questions GET status code: 200
-2025-08-14 17:53:04,501 - ERROR - [vhdhqerdf@outlook.com] Questions GET URL: https://iforgot.apple.com/session/timeout?
-2025-08-14 17:53:04,501 - ERROR - [vhdhqerdf@outlook.com] SESSION TIMEOUT DETECTED
-2025-08-14 17:53:04,501 - ERROR - [vhdhqerdf@outlook.com] Apple session expired before reaching security questions
-2025-08-14 17:56:21,367 - INFO - [tttujccembd@outlook.com] Got Sstt token from birthday GET
-2025-08-14 17:56:21,756 - INFO - [tttujccembd@outlook.com] Got Sstt token from birthday POST
-2025-08-14 17:56:22,063 - INFO - [tttujccembd@outlook.com] Got Sstt token from questions GET
-2025-08-14 17:56:22,063 - INFO - [tttujccembd@outlook.com] Questions response: {'supportsUnlock': True, 'dateLayout': 'monthdayyear', 'showBirthYear': True, 'dateInputPlaceholder': 'mm/dd/yyyy', 'dateInputFormat': 'mm/dd/yyyy', 'forgotPasswordFlow': True, 'sstt': 'CwPp/Kgf82AWC/rvveGpninFsAqsrS1x0G/eSZNwVgOpRDcLFeRQgDF7HOqC+eK92PTFyKAMc+JusyCbBqJ11SLKU9uFlDxGPzSfE2Z+Mpz2bEqmVS9PVp0BCCRIO0K64bxY4iszRA+bqEmFc1jm4y5yrii9V73IQ9CCKD7jLXja5IXpzFfw1gWsujnjIJ03t8LD5v4+wp4br7Otq/f9Ur9J91e+MH77XqodTQSQhtCcF55o9oU+bqfO0o/7DYoT+Bem0tmu5FcEYLh4SNiwFYs2U+YZPL2KxyqXEpSG1/zOy5XRQ5H7OuRtu42JskKwO0xmPanOxbk+TxaEMtEWH8qZhHFtQTPLr5EQRIiULk8b0CHp40oK6gTHTWyCNj1vB2EZGV8/6ogqKnYHc3PAiDQHXx40QfexQH8ZeppkbA3DNvIRdgMuxPZ21BI+wIYZhwFjDaDL6hTDq6p+oD795hBQKGodBPidNL3N+Kj/9a+iL0jZDDvAeDFydIFQ36nBFJ7ywmvjsAXgc2OGIAPtEg=='}
-2025-08-14 17:56:22,064 - ERROR - [tttujccembd@outlook.com] No 'questions' key in response: {'supportsUnlock': True, 'dateLayout': 'monthdayyear', 'showBirthYear': True, 'dateInputPlaceholder': 'mm/dd/yyyy', 'dateInputFormat': 'mm/dd/yyyy', 'forgotPasswordFlow': True, 'sstt': 'CwPp/Kgf82AWC/rvveGpninFsAqsrS1x0G/eSZNwVgOpRDcLFeRQgDF7HOqC+eK92PTFyKAMc+JusyCbBqJ11SLKU9uFlDxGPzSfE2Z+Mpz2bEqmVS9PVp0BCCRIO0K64bxY4iszRA+bqEmFc1jm4y5yrii9V73IQ9CCKD7jLXja5IXpzFfw1gWsujnjIJ03t8LD5v4+wp4br7Otq/f9Ur9J91e+MH77XqodTQSQhtCcF55o9oU+bqfO0o/7DYoT+Bem0tmu5FcEYLh4SNiwFYs2U+YZPL2KxyqXEpSG1/zOy5XRQ5H7OuRtu42JskKwO0xmPanOxbk+TxaEMtEWH8qZhHFtQTPLr5EQRIiULk8b0CHp40oK6gTHTWyCNj1vB2EZGV8/6ogqKnYHc3PAiDQHXx40QfexQH8ZeppkbA3DNvIRdgMuxPZ21BI+wIYZhwFjDaDL6hTDq6p+oD795hBQKGodBPidNL3N+Kj/9a+iL0jZDDvAeDFydIFQ36nBFJ7ywmvjsAXgc2OGIAPtEg=='}
-2025-08-14 17:56:22,064 - ERROR - [tttujccembd@outlook.com] Questions GET status code: 200
-2025-08-14 17:56:22,064 - ERROR - [tttujccembd@outlook.com] Questions GET URL: https://iforgot.apple.com/password/verify/birthday
-2025-08-14 17:59:57,497 - INFO - [tttujccembd@outlook.com] Got Sstt token from birthday GET
-2025-08-14 17:59:58,419 - INFO - [tttujccembd@outlook.com] Got Sstt token from birthday POST
-2025-08-14 17:59:58,743 - INFO - [tttujccembd@outlook.com] Got Sstt token from questions GET
-2025-08-14 17:59:58,745 - INFO - [tttujccembd@outlook.com] Questions response: {'supportsUnlock': True, 'questions': [{'id': 130, 'question': '你少年时代最好的朋友叫什么名字？', 'number': 1, 'locale': {'locale': 'zh_CN', 'dsformattedString': 'CN-ZH', 'isoLocale': 'zh_CN', 'siteCountryCode': 'CN', 'acceptLanguageLocale': 'zh-cn', 'headerSearchLocale': 'zh-CN', 'isoLocaleWithSiteCountry': 'zh_CN', 'isoLocaleWithScript': 'zh_CN', 'isoLocaleWithScriptWithoutCountry': 'zh_CN', 'language': 'zh', 'country': 'CN', 'displayLocale': 'Chinese - China', 'displayLanguage': '中文', 'displayCountry': '中国'}}, {'id': 136, 'question': '你的理想工作是什么？', 'number': 2, 'locale': {'locale': 'zh_CN', 'dsformattedString': 'CN-ZH', 'isoLocale': 'zh_CN', 'siteCountryCode': 'CN', 'acceptLanguageLocale': 'zh-cn', 'headerSearchLocale': 'zh-CN', 'isoLocaleWithSiteCountry': 'zh_CN', 'isoLocaleWithScript': 'zh_CN', 'isoLocaleWithScriptWithoutCountry': 'zh_CN', 'language': 'zh', 'country': 'CN', 'displayLocale': 'Chinese - China', 'displayLanguage': '中文', 'displayCountry': '中国'}}], 'displayQuestionNumber': 1, 'forgotPasswordFlow': True, 'sstt': 'K1oYJlW7vlyVum6OgRzpNevBxHHgN/V77zotTqjOpCURmg2xqZ+Az1paQ6kzIHGjoRBextmHmR7aKPH9kul9hj9XHSY/sjFxflHRYpRxOmvH2kSfE69xlgZFRxwYzvxa46vE7LgCcizkRpO4RmXXVZ15uQqLbAfhar74Gx612gZayPTRGt74IHywp54yXcr5PBy4knCpb8yT7U3Tcj0nkLK2mlA0l7qipqTkxmFWQ8LQR1DFNfAuXRrs9vy+CgNLVYVxzW8eq29rcm3m9NesW+QRXcaDa4qElzeAuSi/Qcr5QiefAzX6y8e9No6p5T1YgfH+gupbO2EBTSHZBZnRYz9TU/8B39Oobx66blpjsrPu88F07wPfSsld//rbIBXXwsnvSaWvSKUXda43vPBP4JY33TmpSrPXK79Jq5bmldHn2a+nKniXF5xC8l6ut+uwXwshgK5Jv0pJeSoobiAD0/mYFtTkosel2rJR9saCbu9KYWmTaSjU1nB6jkTajkwyD1oxiYbVCnN02uDZRW/zF2yqd5/PZq54xGBcTYPmzeNPbptMMzPmNkBuiw=='}
-2025-08-14 17:59:58,745 - INFO - [tttujccembd@outlook.com] Received questions from Apple:
-2025-08-14 17:59:58,745 - INFO - [tttujccembd@outlook.com] Question 1: '你少年时代最好的朋友叫什么名字？' (ID: 130, Number: 1)
-2025-08-14 17:59:58,745 - INFO - [tttujccembd@outlook.com] Question 2: '你的理想工作是什么？' (ID: 136, Number: 2)
-2025-08-14 17:59:58,745 - INFO - [tttujccembd@outlook.com] Question 1 answer index: 2, Answer: '111'
-2025-08-14 17:59:58,745 - INFO - [tttujccembd@outlook.com] Question 2 answer index: 3, Answer: '222'
-2025-08-14 17:59:58,745 - INFO - [tttujccembd@outlook.com] Payload created successfully
-2025-08-14 17:59:58,745 - INFO - [tttujccembd@outlook.com] === DETAILED ANSWER DEBUG ===
-2025-08-14 17:59:58,745 - INFO - [tttujccembd@outlook.com] Answer 1 raw: '111'
-2025-08-14 17:59:58,745 - INFO - [tttujccembd@outlook.com] Answer 1 repr: '111'
-2025-08-14 17:59:58,745 - INFO - [tttujccembd@outlook.com] Answer 1 bytes: b'111'
-2025-08-14 17:59:58,745 - INFO - [tttujccembd@outlook.com] Answer 2 raw: '222'
-2025-08-14 17:59:58,745 - INFO - [tttujccembd@outlook.com] Answer 2 repr: '222'
-2025-08-14 17:59:58,745 - INFO - [tttujccembd@outlook.com] Answer 2 bytes: b'222'
-2025-08-14 17:59:58,746 - INFO - [tttujccembd@outlook.com] === END ANSWER DEBUG ===
-2025-08-14 17:59:58,746 - INFO - [tttujccembd@outlook.com] Sending questions to Apple...
-2025-08-14 17:59:59,108 - INFO - [tttujccembd@outlook.com] Questions response status: 302
-2025-08-14 17:59:59,766 - INFO - [tttujccembd@outlook.com] Got Sstt token from reset GET
+2025-12-19 14:34:41,778 - INFO - [eqnvsyvpws@outlook.com] Generated new password: VVxxNN17
+2025-12-19 14:34:43,179 - INFO - [EnolaPalaspas618@hotmail.com] Generated new password: LeeeeR664
+2025-12-19 14:34:44,405 - INFO - [wyszkowski18590@outlook.com] Generated new password: JJhhSS71
+2025-12-19 14:35:12,615 - INFO - [eqnvsyvpws@outlook.com] Generated new password: BBnnRR64
+2025-12-19 14:35:16,018 - INFO - [EnolaPalaspas618@hotmail.com] Generated new password: ZZqqXX11
+2025-12-19 14:35:19,688 - INFO - [EnolaPalaspas618@hotmail.com] Step: Getting recovery options...
+2025-12-19 14:35:20,011 - INFO - [EnolaPalaspas618@hotmail.com] Got Sstt from recovery options
+2025-12-19 14:35:20,011 - INFO - [EnolaPalaspas618@hotmail.com] Got Sstt from recovery options JSON
+2025-12-19 14:35:20,011 - INFO - [EnolaPalaspas618@hotmail.com] Step: Selecting reset_password option...
+2025-12-19 14:35:20,579 - INFO - [EnolaPalaspas618@hotmail.com] Got Sstt from select option
+2025-12-19 14:35:20,579 - INFO - [EnolaPalaspas618@hotmail.com] Step: Getting authentication method page...
+2025-12-19 14:35:20,879 - INFO - [EnolaPalaspas618@hotmail.com] Got Sstt from auth method GET
+2025-12-19 14:35:20,879 - INFO - [EnolaPalaspas618@hotmail.com] Got Sstt from auth method JSON
+2025-12-19 14:35:20,879 - INFO - [EnolaPalaspas618@hotmail.com] Step: Selecting questions auth method...
+2025-12-19 14:35:21,343 - INFO - [EnolaPalaspas618@hotmail.com] Got Sstt from auth method POST
+2025-12-19 14:35:21,344 - INFO - [EnolaPalaspas618@hotmail.com] Step: Getting birthday page...
+2025-12-19 14:35:21,646 - INFO - [EnolaPalaspas618@hotmail.com] Got Sstt token from birthday GET
+2025-12-19 14:35:22,067 - INFO - [EnolaPalaspas618@hotmail.com] Got Sstt token from birthday POST
+2025-12-19 14:35:22,369 - INFO - [EnolaPalaspas618@hotmail.com] Got Sstt token from questions GET
+2025-12-19 14:35:22,369 - INFO - [EnolaPalaspas618@hotmail.com] Questions response: {'questions': [{'id': 130, 'question': '你少年时代最好的朋友叫什么名字？', 'number': 1, 'locale': {'locale': 'zh_CN', 'dsformattedString': 'CN-ZH', 'isoLocale': 'zh_CN', 'siteCountryCode': 'CN', 'acceptLanguageLocale': 'zh-cn', 'headerSearchLocale': 'zh-CN', 'isoLocaleWithSiteCountry': 'zh_CN', 'isoLocaleWithScript': 'zh_CN', 'isoLocaleWithScriptWithoutCountry': 'zh_CN', 'language': 'zh', 'country': 'CN', 'displayLocale': 'Chinese - China', 'displayLanguage': '中文', 'displayCountry': '中国'}}, {'id': 136, 'question': '你的理想工作是什么？', 'number': 2, 'locale': {'locale': 'zh_CN', 'dsformattedString': 'CN-ZH', 'isoLocale': 'zh_CN', 'siteCountryCode': 'CN', 'acceptLanguageLocale': 'zh-cn', 'headerSearchLocale': 'zh-CN', 'isoLocaleWithSiteCountry': 'zh_CN', 'isoLocaleWithScript': 'zh_CN', 'isoLocaleWithScriptWithoutCountry': 'zh_CN', 'language': 'zh', 'country': 'CN', 'displayLocale': 'Chinese - China', 'displayLanguage': '中文', 'displayCountry': '中国'}}], 'displayQuestionNumber': 1, 'forgotPasswordFlow': True, 'sstt': '0EqgntL9Ajpnb1VmJ6OeSfUZWqOfaqHrZdYY7pcsZj+bslk7jZ+O8/Lr2kYZZPfutPbgiYDDOvVxIYUtH3hJyYPK7618GqPX+gRuwCKl/Zmc1FXt6+yGcjG1ZtSI9pBpJAX3yg+qTflO3wTX2kQNkf97Q/4cCkBCs6x8AzqId0MmSQIycZi5lK/QY9NTirREKxuDaq4rdZPXiNK2SKU8f9208yzgNUaekzqtF3gqwsURSJXbkYTy/FGDUsW9uEjan00YLxUbD07LAb0zC0z1WMi8aywKUCV7d89xDyqfFecIp6znbMKtbhf33H8LcpHx6nslhkpHiP1cTNTw6/c7fQHsk0ilAH89jYymR7CbAQ/58Tz7mPk0xPrqNX3HnaHxu7Z6h91/pGaeXOT3WK6QdhRl2sSERgkYbnoFE174s+ywbU5TYGYKeIK6ui367iMnbiikXRFu7lRGcShWj5OzgsDPxUd+p3II6gDgxTyrs/HlLfz+id5ud/GJqq4xpHSHqf097zdBBmmH8YJTj8zsaBS/51OfiDUbtVF/qWrT7lgdn2b2+93trqRcDMqO61OJW17bl2BeqxN+i7ry0BD2Ap4='}
+2025-12-19 14:35:22,369 - INFO - [EnolaPalaspas618@hotmail.com] Received questions from Apple:
+2025-12-19 14:35:22,370 - INFO - [EnolaPalaspas618@hotmail.com] Question 1: '你少年时代最好的朋友叫什么名字？' (ID: 130, Number: 1)
+2025-12-19 14:35:22,370 - INFO - [EnolaPalaspas618@hotmail.com] Question 2: '你的理想工作是什么？' (ID: 136, Number: 2)
+2025-12-19 14:35:22,370 - INFO - [EnolaPalaspas618@hotmail.com] Question 1 answer index: 2, Answer: '111'
+2025-12-19 14:35:22,370 - INFO - [EnolaPalaspas618@hotmail.com] Question 2 answer index: 3, Answer: '222'
+2025-12-19 14:35:22,370 - INFO - [EnolaPalaspas618@hotmail.com] Payload created successfully
+2025-12-19 14:35:22,370 - INFO - [EnolaPalaspas618@hotmail.com] === DETAILED ANSWER DEBUG ===
+2025-12-19 14:35:22,370 - INFO - [EnolaPalaspas618@hotmail.com] Answer 1 raw: '111'
+2025-12-19 14:35:22,370 - INFO - [EnolaPalaspas618@hotmail.com] Answer 1 repr: '111'
+2025-12-19 14:35:22,370 - INFO - [EnolaPalaspas618@hotmail.com] Answer 1 bytes: b'111'
+2025-12-19 14:35:22,370 - INFO - [EnolaPalaspas618@hotmail.com] Answer 2 raw: '222'
+2025-12-19 14:35:22,370 - INFO - [EnolaPalaspas618@hotmail.com] Answer 2 repr: '222'
+2025-12-19 14:35:22,371 - INFO - [EnolaPalaspas618@hotmail.com] Answer 2 bytes: b'222'
+2025-12-19 14:35:22,371 - INFO - [EnolaPalaspas618@hotmail.com] === END ANSWER DEBUG ===
+2025-12-19 14:35:22,371 - INFO - [EnolaPalaspas618@hotmail.com] Sending questions to Apple...
+2025-12-19 14:35:22,860 - INFO - [EnolaPalaspas618@hotmail.com] Questions response status: 302
+2025-12-19 14:35:23,553 - INFO - [EnolaPalaspas618@hotmail.com] Got Sstt token from reset GET
+2025-12-19 14:35:24,287 - INFO - [wyszkowski18590@outlook.com] Generated new password: WrrrrS278
+2025-12-19 14:35:28,099 - INFO - [wyszkowski18590@outlook.com] Step: Getting recovery options...
+2025-12-19 14:35:28,400 - INFO - [wyszkowski18590@outlook.com] Got Sstt from recovery options
+2025-12-19 14:35:28,400 - INFO - [wyszkowski18590@outlook.com] Got Sstt from recovery options JSON
+2025-12-19 14:35:28,401 - INFO - [wyszkowski18590@outlook.com] Step: Selecting reset_password option...
+2025-12-19 14:35:28,601 - INFO - [wyszkowski18590@outlook.com] Step: Selecting questions auth method...
+2025-12-19 14:35:28,815 - INFO - [wyszkowski18590@outlook.com] Step: Getting birthday page...
+2025-12-19 14:35:29,173 - ERROR - [wyszkowski18590@outlook.com] No Sstt header in birthday GET response
+2025-12-19 14:35:29,173 - ERROR - [wyszkowski18590@outlook.com] Available headers: ['Connection', 'Content-Encoding', 'Content-Language', 'Content-Security-Policy', 'Date', 'Host', 'Location', 'Referrer-Policy', 'Server', 'Set-Cookie', 'Strict-Transport-Security', 'Vary', 'X-Apple-I-Request-Id', 'X-Buildversion', 'X-Content-Type-Options', 'X-Frame-Options', 'X-Xss-Protection']
+2025-12-19 14:36:02,970 - INFO - [eqnvsyvpws@outlook.com] Generated new password: TTTqqq846
+2025-12-19 14:36:06,356 - INFO - [EnolaPalaspas618@hotmail.com] Generated new password: YzzzzS878
+2025-12-19 14:36:10,602 - INFO - [EnolaPalaspas618@hotmail.com] Step: Getting recovery options...
+2025-12-19 14:36:11,089 - INFO - [EnolaPalaspas618@hotmail.com] Got Sstt from recovery options
+2025-12-19 14:36:11,089 - INFO - [EnolaPalaspas618@hotmail.com] Got Sstt from recovery options JSON
+2025-12-19 14:36:11,089 - INFO - [EnolaPalaspas618@hotmail.com] Step: Selecting reset_password option...
+2025-12-19 14:36:11,279 - INFO - [EnolaPalaspas618@hotmail.com] No redirect from select option (status: 503), trying direct GET...
+2025-12-19 14:36:11,779 - INFO - [EnolaPalaspas618@hotmail.com] Step: Selecting questions auth method...
+2025-12-19 14:36:11,964 - INFO - [EnolaPalaspas618@hotmail.com] Step: Getting birthday page...
+2025-12-19 14:36:12,754 - ERROR - [EnolaPalaspas618@hotmail.com] No Sstt header in birthday GET response
+2025-12-19 14:36:12,754 - ERROR - [EnolaPalaspas618@hotmail.com] Available headers: ['Connection', 'Content-Encoding', 'Content-Language', 'Content-Security-Policy', 'Date', 'Host', 'Location', 'Referrer-Policy', 'Server', 'Set-Cookie', 'Strict-Transport-Security', 'Vary', 'X-Apple-I-Request-Id', 'X-Buildversion', 'X-Content-Type-Options', 'X-Frame-Options', 'X-Xss-Protection']
+2025-12-19 14:36:12,756 - INFO - [wyszkowski18590@outlook.com] Generated new password: FuuuuS610
+2025-12-19 14:36:16,461 - INFO - [wyszkowski18590@outlook.com] Step: Getting recovery options...
+2025-12-19 14:36:16,836 - INFO - [wyszkowski18590@outlook.com] Got Sstt from recovery options
+2025-12-19 14:36:16,836 - INFO - [wyszkowski18590@outlook.com] Got Sstt from recovery options JSON
+2025-12-19 14:36:16,836 - INFO - [wyszkowski18590@outlook.com] Step: Selecting reset_password option...
+2025-12-19 14:36:17,017 - INFO - [wyszkowski18590@outlook.com] No redirect from select option (status: 503), trying direct GET...
+2025-12-19 14:36:17,359 - INFO - [wyszkowski18590@outlook.com] Got Sstt from direct auth method GET
+2025-12-19 14:36:17,359 - INFO - [wyszkowski18590@outlook.com] Got Sstt from direct auth method JSON
+2025-12-19 14:36:17,359 - INFO - [wyszkowski18590@outlook.com] Step: Selecting questions auth method...
+2025-12-19 14:36:17,540 - INFO - [wyszkowski18590@outlook.com] Step: Getting birthday page...
+2025-12-19 14:36:17,896 - ERROR - [wyszkowski18590@outlook.com] No Sstt header in birthday GET response
+2025-12-19 14:36:17,896 - ERROR - [wyszkowski18590@outlook.com] Available headers: ['Connection', 'Content-Encoding', 'Content-Language', 'Content-Security-Policy', 'Date', 'Host', 'Location', 'Referrer-Policy', 'Server', 'Set-Cookie', 'Strict-Transport-Security', 'Vary', 'X-Apple-I-Request-Id', 'X-Buildversion', 'X-Content-Type-Options', 'X-Frame-Options', 'X-Xss-Protection']

@@ -1,0 +1,290 @@
+[14:31:16.408] [INFO] 
+############################################################
+[14:31:16.408] [INFO] STARTING FLOW TRACE FOR: eqnvsyvpws@outlook.com
+[14:31:16.408] [INFO] Birthday: 03/18/1999
+[14:31:16.408] [INFO] ############################################################
+
+[14:31:16.408] [INFO] [36mSTEP 1: Loading initial page...[39m
+[14:31:17.819] [INFO] 
+============================================================
+[14:31:17.819] [INFO] STEP: 1. Initial Page Load
+[14:31:17.820] [INFO] ============================================================
+[14:31:17.820] [INFO] Status Code: 200
+[14:31:17.820] [INFO] Final URL: https://iforgot.apple.com/password/verify/appleid
+[14:31:17.820] [INFO] 
+--- Response Headers (21) ---
+[14:31:17.820] [INFO]   Cache-Control: no-store
+[14:31:17.820] [INFO]   Connection: keep-alive
+[14:31:17.820] [INFO]   Content-Encoding: gzip
+[14:31:17.820] [INFO]   Content-Language: en-US-x-lvariant-USA
+[14:31:17.820] [INFO]   Content-Location: /password/verify/appleid
+[14:31:17.820] [INFO]   Content-Security-Policy: default-src 'self' ; connect-src 'self' https://www.apple.com https://appleid.cdn-apple.com ; font-s...
+[14:31:17.820] [INFO]   Content-Type: text/html;charset=UTF-8
+[14:31:17.820] [INFO]   Date: Fri, 19 Dec 2025 11:31:17 GMT
+[14:31:17.820] [INFO]   Host: iforgot.apple.com
+[14:31:17.820] [INFO]   Location: /password/verify/appleid
+[14:31:17.820] [INFO]   Referrer-Policy: origin
+[14:31:17.820] [INFO]   Server: Apple
+[14:31:17.821] [INFO]   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'X-Apple-I-Web-Token=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Domain=apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com; Path=/; Secure; HttpOnly', 'site=USA; Domain=apple.com; Path=/; Secure; HttpOnly', 'X-Apple-I-Web-Token=AAAAKjJ8ZjYwNjI2Yzk2YWI5OTI5ZGE2Mzg0YWVhNzdiNDUxMDYAAAGbNm6cWspNGGiZ41BWkJiDuxRy5xEWetKyK1fGANK6KyCfcEdW5derS3LiZ2zr1qWzAASxYeyWQf7m0jMmAqZfQ0EitPYLZt4tsjw5o5/tbemVxGvFih12Xg==; Max-Age=900; Expires=Fri, 19 Dec 2025 11:46:17 GMT; Domain=apple.com; Path=/; Secure; HttpOnly', 'ifssp=93B735E12A9CCC2116104143403EF56D3C479EF7681DE4820A0A3FC52284D9CACC683AD881BD279E9285354510371705485A5D550C400215291F7FFB820F06A4DF6CC2669F10D38B571D1A02F8788E4E9FF06805ED3212BBB7332A2B0633E542E0ED1979A81A5A0F164BD319C004B181FE390072EFEBA3C9; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly']...
+[14:31:17.821] [INFO]   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+[14:31:17.821] [INFO]   Vary: accept-encoding
+[14:31:17.821] [INFO]   X-Apple-I-Request-Id: 3bcb53eb-dcce-11f0-a19c-1517e8a4655e
+[14:31:17.821] [INFO]   X-Apple-Id-Session-Id: 93B735E12A9CCC2116104143403EF56D3C479EF7681DE4820A0A3FC52284D9CACC683AD881BD279E9285354510371705485A...
+[14:31:17.821] [INFO]   X-Buildversion: R3
+[14:31:17.821] [INFO]   X-Content-Type-Options: nosniff
+[14:31:17.821] [INFO]   X-Frame-Options: ['DENY', 'SAMEORIGIN']
+[14:31:17.821] [INFO]   X-Xss-Protection: 1; mode=block
+[14:31:17.821] [INFO] 
+--- Cookies (5) ---
+[14:31:17.821] [INFO]   idclient: web
+[14:31:17.821] [INFO]   ifssp: 93B735E12A9CCC2116104143403EF56D3C479EF7681DE4820A...
+[14:31:17.821] [INFO]   dslang: US-EN
+[14:31:17.821] [INFO]   site: USA
+[14:31:17.821] [INFO]   X-Apple-I-Web-Token: AAAAKjJ8ZjYwNjI2Yzk2YWI5OTI5ZGE2Mzg0YWVhNzdiNDUxMD...
+[14:31:17.821] [INFO] 
+--- Response Body (first 1000 chars) ---
+[14:31:17.821] [INFO] 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+        
+    
+    
+
+
+
+
+
+<!DOCTYPE html>
+
+
+<html class="eyebrow ltr " lang="en" dir=ltr>
+<head>
+    <meta name="format-detection" content="telephone=no"/>
+    <title>
+    
+        
+        
+            Recover Your Apple Account - Apple
+        
+        
+        
+    
+</title>
+    
+    
+    
+    <link rel="SHORTCUT ICON" href="/images/global/favicon.ico"/>
+    
+
+
+
+    
+    
+    
+    
+    
+    
+    
+
+<link rel="stylesheet"  href="https://www.apple.com/wss/fonts?families=SF+Pro,v3|SF+Pro+Icons,v3" type="text/css"/>
+
+
+
+    
+    
+
+
+
+    
+    
+    
+    
+    
+    
+
+    
+  <script type="text/stache" id="jstache_1460893030">
+    
+          
+          
+          
+          
+          
+          <generic-error-modal {(show)}="showGenericErrorModal"
+                     {error-title}="modalErrorTitle"
+                     action-text="OK"
+                     {error-message}="modalErrorMessage"><
+[14:31:17.822] [INFO] ============================================================
+
+[14:31:17.822] [INFO] [32mExtracted sstt token: 9fqlrEGa78%2BAQJcqMkN0dEpNvHWB2QFxVEk50WGIIM/YxQMt...[39m
+[14:31:17.822] [INFO] 
+[36mSTEP 2: Getting captcha...[39m
+[14:31:18.466] [INFO] 
+============================================================
+[14:31:18.466] [INFO] STEP: 2. Get Captcha
+[14:31:18.466] [INFO] ============================================================
+[14:31:18.466] [INFO] Status Code: 401
+[14:31:18.466] [INFO] Final URL: https://iforgot.apple.com/captcha?captchaType=IMAGE
+[14:31:18.466] [INFO] 
+--- Response Headers (20) ---
+[14:31:18.466] [INFO]   Cache-Control: ['no-store', 'no-store']
+[14:31:18.466] [INFO]   Connection: keep-alive
+[14:31:18.467] [INFO]   Content-Encoding: gzip
+[14:31:18.467] [INFO]   Content-Language: en-US-x-lvariant-USA
+[14:31:18.467] [INFO]   Content-Location: /captcha
+[14:31:18.467] [INFO]   Content-Security-Policy: default-src 'self' ; connect-src 'self' https://www.apple.com https://appleid.cdn-apple.com ; font-s...
+[14:31:18.467] [INFO]   Content-Type: application/json;charset=UTF-8
+[14:31:18.467] [INFO]   Date: Fri, 19 Dec 2025 11:31:18 GMT
+[14:31:18.467] [INFO]   Location: /captcha?captchaType=IMAGE
+[14:31:18.467] [INFO]   Referrer-Policy: origin
+[14:31:18.467] [INFO]   Server: Apple
+[14:31:18.467] [INFO]   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com; Path=/; Secure; HttpOnly', 'site=USA; Domain=apple.com; Path=/; Secure; HttpOnly', 'X-Apple-I-Web-Token=AAAAKjN8ZjYwNjI2Yzk2YWI5OTI5ZGE2Mzg0YWVhNzdiNDUxMDYAAAGbNm6f4S8ZSJ18u8Z92Lo4NOO3AaRaflpYVUpq+H/B4BrqnmaX3NBkWybnHCtcGbEEAASxWdBf8nByu5tsk6WwNc8XvhgjAD4t4qSPgkxIxZfLhJzi+kAxng==; Max-Age=900; Expires=Fri, 19 Dec 2025 11:46:18 GMT; Domain=apple.com; Path=/; Secure; HttpOnly']...
+[14:31:18.467] [INFO]   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+[14:31:18.467] [INFO]   Vary: accept-encoding
+[14:31:18.467] [INFO]   Www-Authenticate: PrivateToken challenge=AAIAGmlkbXMtaXNzdWVyLmNvcnAuYXBwbGUuY29tIEAJ6VnRXLd9ZLpO_tNoPpH-jxSOQ0675uJQc...
+[14:31:18.467] [INFO]   X-Apple-I-Request-Id: 3c3d011a-dcce-11f0-ac46-bb0fd901151a
+[14:31:18.467] [INFO]   X-Buildversion: R3
+[14:31:18.467] [INFO]   X-Content-Type-Options: nosniff
+[14:31:18.467] [INFO]   X-Frame-Options: ['DENY', 'SAMEORIGIN']
+[14:31:18.467] [INFO]   X-Xss-Protection: 1; mode=block
+[14:31:18.467] [INFO] 
+--- Cookies (4) ---
+[14:31:18.467] [INFO]   idclient: web
+[14:31:18.467] [INFO]   dslang: US-EN
+[14:31:18.468] [INFO]   site: USA
+[14:31:18.468] [INFO]   X-Apple-I-Web-Token: AAAAKjN8ZjYwNjI2Yzk2YWI5OTI5ZGE2Mzg0YWVhNzdiNDUxMD...
+[14:31:18.468] [INFO] 
+--- Response Body (first 1000 chars) ---
+[14:31:18.468] [INFO] {
+  "payload" : {
+    "contentType" : "image/jpeg",
+    "content" : "/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAKADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDpVUFbX/RNwb7zcfv+P8tz6UjLiK5P2XaVbh/+eIx09ffjjmhWjH2bN0ylfvjjEH09OeOc8U0mMxTgXDszNlEP/Lb3PfrkccYFAE2
+[14:31:18.468] [INFO] ============================================================
+
+[14:31:18.468] [INFO] [32mCaptcha ID: 1542957412[39m
+[14:31:18.468] [INFO] 
+[36mSTEP 3: Solving captcha...[39m
+[14:31:20.356] [INFO] [32mCaptcha solved: VEPC3[39m
+[14:31:20.357] [INFO] 
+[36mSTEP 4: Verifying Apple ID...[39m
+[14:31:20.357] [INFO] POST data: {
+  "id": "eqnvsyvpws@outlook.com",
+  "captcha": {
+    "id": 1542957412,
+    "answer": "VEPC3",
+    "token": "dc85048d503802ca741113dd15e958ec3e7563e34f192e7f7219ac7f7d78e128071d35067ff00b0ad1a08728b941f38dc936531c3cfb556854ae4dd67d5d3eab09ff251cd25e440a252e76de0119caedbceb126b8975e3eed6af36e0fc9bc1ec614581141f16f5a4d9ac01e93ec94bf1ef2cda67d8cab5c41430372a33e7e1bbfe13c0bc26ff0b3eec62924fe8e8dfe972c60b3c4a003dd7f2a3be8b174592f0f05cc42528e8220676593de873bd858ab21358d56d8b75dc4c634db9a841ea32567066cd3ec4773444969c4957488653RSGU"
+  }
+}
+[14:31:20.803] [INFO] 
+============================================================
+[14:31:20.804] [INFO] STEP: 4. Verify Apple ID
+[14:31:20.804] [INFO] ============================================================
+[14:31:20.804] [INFO] Status Code: 400
+[14:31:20.804] [INFO] Final URL: https://iforgot.apple.com/password/verify/appleid
+[14:31:20.804] [INFO] 
+--- Response Headers (20) ---
+[14:31:20.804] [INFO]   Cache-Control: ['no-store', 'no-store']
+[14:31:20.804] [INFO]   Connection: keep-alive
+[14:31:20.804] [INFO]   Content-Encoding: gzip
+[14:31:20.804] [INFO]   Content-Language: en-US-x-lvariant-USA
+[14:31:20.805] [INFO]   Content-Location: /password/verify/appleid
+[14:31:20.805] [INFO]   Content-Security-Policy: default-src 'self' ; connect-src 'self' https://www.apple.com https://appleid.cdn-apple.com ; font-s...
+[14:31:20.805] [INFO]   Content-Type: application/json;charset=UTF-8
+[14:31:20.805] [INFO]   Date: Fri, 19 Dec 2025 11:31:20 GMT
+[14:31:20.805] [INFO]   Location: /password/verify/appleid
+[14:31:20.805] [INFO]   Referrer-Policy: origin
+[14:31:20.805] [INFO]   Server: Apple
+[14:31:20.805] [INFO]   Set-Cookie: ['idclient=web; Domain=iforgot.apple.com; Path=/; Secure; HttpOnly', 'dslang=US-EN; Domain=apple.com; Path=/; Secure; HttpOnly', 'site=USA; Domain=apple.com; Path=/; Secure; HttpOnly']...
+[14:31:20.805] [INFO]   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+[14:31:20.805] [INFO]   Vary: accept-encoding
+[14:31:20.805] [INFO]   X-Apple-I-Ercd: -20210
+[14:31:20.805] [INFO]   X-Apple-I-Request-Id: 3dbee6e1-dcce-11f0-a19c-1517e8a4655e
+[14:31:20.805] [INFO]   X-Buildversion: R3
+[14:31:20.805] [INFO]   X-Content-Type-Options: nosniff
+[14:31:20.805] [INFO]   X-Frame-Options: ['DENY', 'SAMEORIGIN']
+[14:31:20.805] [INFO]   X-Xss-Protection: 1; mode=block
+[14:31:20.806] [INFO] 
+--- Cookies (3) ---
+[14:31:20.806] [INFO]   idclient: web
+[14:31:20.806] [INFO]   dslang: US-EN
+[14:31:20.806] [INFO]   site: USA
+[14:31:20.806] [INFO] 
+--- Response Body (first 1000 chars) ---
+[14:31:20.806] [INFO] {
+  "service_errors" : [ {
+    "code" : "-20210",
+    "message" : "This account is not active."
+  } ],
+  "hasError" : true
+}
+[14:31:20.806] [INFO] ============================================================
+
+[14:31:20.806] [ERROR] [31mApple ID verification failed[39m
