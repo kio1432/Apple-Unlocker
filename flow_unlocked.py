@@ -36,7 +36,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('files/flow_unlocked.log'),
+        logging.FileHandler('files/logs/flow_unlocked.log'),
         logging.StreamHandler()
     ]
 )
@@ -141,11 +141,11 @@ class UnlockedAccountFlow:
     def _solve_captcha(self, image_base64: str) -> str:
         """Solve captcha using YesCaptcha"""
         try:
-            client = Client(settings['api_key'])
+            api_key = settings.get('api_key') or settings.get('API_KEY', '')
+            client = Client(client_key=api_key)
             task = ImageToTextTask(image_base64)
             job = client.create_task(task)
-            result = job.join()
-            return result.solution.text
+            return job.get_solution_text()
         except Exception as e:
             logger.error(f"[{self.email}] Captcha error: {e}")
             return None
@@ -185,9 +185,13 @@ class UnlockedAccountFlow:
                 self.sstt_token = urllib.parse.quote(match.group(1))
                 self.headers['sstt'] = self.sstt_token
             
+            # Update cookies
+            self.headers['cookie'] = '; '.join([f"{k}={v}" for k, v in resp.cookies.items()])
+            
             # STEP 2: Get and solve captcha
             logger.info(f"[{self.email}] Step 2: Getting captcha...")
             
+            captcha_info = None
             for attempt in range(3):
                 captcha_resp = self.session.get(
                     'https://iforgot.apple.com/captcha?captchaType=IMAGE',
@@ -197,18 +201,34 @@ class UnlockedAccountFlow:
                 if captcha_resp.status_code in [200, 401]:
                     try:
                         captcha_data = captcha_resp.json()
+                        captcha_id = captcha_data.get('id', '')
+                        captcha_token_resp = captcha_data.get('token', '')
+                        
+                        image_b64 = None
                         if 'captcha' in captcha_data:
-                            image_b64 = captcha_data['captcha'].replace('data:image/jpeg;base64,', '')
-                            self.captcha_token = self._solve_captcha(image_b64)
-                            if self.captcha_token:
-                                logger.info(f"[{self.email}] Captcha solved: {self.captcha_token}")
+                            image_b64 = captcha_data['captcha']
+                        elif 'payload' in captcha_data and 'content' in captcha_data['payload']:
+                            image_b64 = captcha_data['payload']['content']
+                        
+                        if image_b64:
+                            if 'base64,' in image_b64:
+                                image_b64 = image_b64.split('base64,')[1]
+                            
+                            captcha_answer = self._solve_captcha(image_b64)
+                            if captcha_answer:
+                                logger.info(f"[{self.email}] Captcha solved: {captcha_answer}")
+                                captcha_info = {
+                                    'id': captcha_id,
+                                    'token': captcha_token_resp,
+                                    'answer': captcha_answer
+                                }
                                 break
-                    except:
-                        pass
+                    except Exception as e:
+                        logger.error(f"[{self.email}] Captcha parse error: {e}")
                 
                 time.sleep(1)
             
-            if not self.captcha_token:
+            if not captcha_info:
                 return {'success': False, 'message': 'Failed to solve captcha', 'new_password': None}
             
             # STEP 3: Verify Apple ID
@@ -217,8 +237,9 @@ class UnlockedAccountFlow:
             verify_data = {
                 "id": self.email,
                 "captcha": {
-                    "id": "",
-                    "token": self.captcha_token
+                    "id": captcha_info['id'],
+                    "answer": captcha_info['answer'],
+                    "token": captcha_info['token']
                 }
             }
             
@@ -404,8 +425,8 @@ class UnlockedAccountFlow:
             questions = questions_data['questions']
             logger.info(f"[{self.email}] Got {len(questions)} questions")
             
-            # Build answers payload
-            answers_payload = {"answers": []}
+            # Build questions payload (format from old working code)
+            questions_payload = {"questions": []}
             
             for q in questions:
                 q_id = q['id']
@@ -417,16 +438,18 @@ class UnlockedAccountFlow:
                 
                 logger.info(f"[{self.email}] Q{q_num}: '{q_text[:30]}...' -> Answer: '{answer}'")
                 
-                answers_payload['answers'].append({
+                questions_payload['questions'].append({
+                    "question": q_text,
+                    "answer": answer,
                     "id": q_id,
-                    "answer": answer
+                    "number": q_num
                 })
             
-            # POST answers
+            # POST questions
             questions_post_resp = self.session.post(
                 'https://iforgot.apple.com/password/verify/questions',
                 headers=self.headers,
-                json=answers_payload
+                json=questions_payload
             )
             
             if questions_post_resp.status_code != 302:
@@ -465,7 +488,7 @@ class UnlockedAccountFlow:
             
             elapsed = time.time() - start_time
             
-            if reset_post_resp.status_code in [200, 302]:
+            if reset_post_resp.status_code in [200, 260, 302]:
                 logger.info(f"[{self.email}] SUCCESS! Password changed in {elapsed:.1f}s")
                 return {
                     'success': True,
@@ -495,10 +518,11 @@ def main():
     print(f"{Fore.CYAN}[+] Unlocked Account Password Change Flow{Fore.RESET}")
     print(f"{Fore.CYAN}[+] For accounts with security questions{Fore.RESET}\n")
     
-    # Read accounts
+    # Read accounts from Accounts.txt
     try:
         with open('files/Accounts.txt', 'r', encoding='utf-8') as f:
             accounts = [line.strip() for line in f.readlines() if line.strip()]
+        print(f"Reading from: files/Accounts.txt")
     except FileNotFoundError:
         print(f"{Fore.RED}Error: files/Accounts.txt not found{Fore.RESET}")
         return
@@ -517,14 +541,34 @@ def main():
         
         if result['success']:
             print(f"{Fore.GREEN}[SUCCESS] {email} -> New password: {result['new_password']}{Fore.RESET}")
+            new_account = account.replace(account.split(',')[1], result['new_password'])
             with lock:
+                from datetime import datetime
+                timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                
+                # Write to Success.txt
                 with open('files/Success.txt', 'a+') as f:
-                    f.write(f"{account.replace(account.split(',')[1], result['new_password'])}\n")
+                    f.write(f"{new_account} | {timestamp}\n")
+                
+                # Update Accounts.txt - replace old account with new password
+                try:
+                    with open('files/Accounts.txt', 'r', encoding='utf-8') as f:
+                        lines = f.readlines()
+                    with open('files/Accounts.txt', 'w', encoding='utf-8') as f:
+                        for line in lines:
+                            if line.strip() == account:
+                                f.write(f"{new_account}\n")
+                            else:
+                                f.write(line)
+                except Exception as e:
+                    logger.error(f"Failed to update Accounts.txt: {e}")
         else:
             print(f"{Fore.RED}[FAILED] {email} -> {result['message']}{Fore.RESET}")
             with lock:
+                from datetime import datetime
+                timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                 with open('files/error.txt', 'a+') as f:
-                    f.write(f"{account} - {result['message']}\n")
+                    f.write(f"{account} - {result['message']} | {timestamp}\n")
         
         print()
 

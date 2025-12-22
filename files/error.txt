@@ -1,6 +1,3 @@
-eqnvsyvpws@outlook.com,Hm6543210,111,222,333,03/18/1999
-EnolaPalaspas618@hotmail.com,Rb839262,111,222,333,03/18/1999
-wyszkowski18590@outlook.com,App1007P,Za11,Za22,Za33,01/01/2000
-wyszkowski18590@outlook.com,App1007P,Za11,Za22,Za33,01/01/2000 - Missing Sstt header in birthday response
-EnolaPalaspas618@hotmail.com,Rb839262,111,222,333,03/18/1999 - Missing Sstt header in birthday response
-wyszkowski18590@outlook.com,App1007P,Za11,Za22,Za33,01/01/2000 - Missing Sstt header in birthday response
+wyszkowski18590@outlook.com,App1007P,Za11,Za22,Za33,01/01/2000 - Failed to solve captcha
+wyszkowski18590@outlook.com,App1007P,Za11,Za22,Za33,01/01/2000 - Wrong answers: {'service_errors': [{'code': '-21509', 'message': 'Please answer both security questions.'}], 'hasError': True}
+wyszkowski18590@outlook.com,App1007P,Za11,Za22,Za33,01/01/2000 - Password reset failed: 260

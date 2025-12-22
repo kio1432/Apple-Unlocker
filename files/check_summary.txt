@@ -1,6 +1,0 @@
-Account Check Summary
-==================================================
-🔐 Temporarily Locked (IP Block): 2
-⏸️ Account Inactive: 1
-
-Total: 3

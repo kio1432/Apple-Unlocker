@@ -1,5 +1,9 @@
-Accounts.txt
-error.txt
 files/Accounts.txt
 files/error.txt
 files/settings.json
+files/logs
+files/Success.txt
+files/results
+files/cookies
+files/headers.json
+files/screenshots
