@@ -1,6 +1,0 @@
-tls_client
-requests
-colorama
-evpn
-loguru
-typing_extensions

@@ -6,14 +6,23 @@
 
 ```
 Apple-Unlocker/
-├── checker.py           # Проверка статуса аккаунтов (iforgot.apple.com)
-├── flow_unlocked.py     # Смена пароля через секретные вопросы
-├── flow_login.py        # Смена пароля через авторизацию
-├── requirements.txt     # Зависимости
-└── files/
-    ├── settings.json    # API ключ YesCaptcha
-    ├── Accounts.txt     # Входные аккаунты
-    └── results/         # Результаты по статусам
+├── config.json                 # Настройки прокси и API (создать из config.example.json)
+│
+├── checker/                    # Проверка статуса аккаунтов (SRP, без капчи)
+│   ├── checker_srp.py          # Основной скрипт
+│   ├── requirements.txt
+│   └── files/
+│       ├── Accounts.txt
+│       └── results/
+│
+├── password_changer/           # Смена пароля
+│   ├── flow_unlocked.py        # Через iforgot + капча (ГОТОВ)
+│   ├── flow_login.py           # Через SRP (В РАЗРАБОТКЕ)
+│   ├── requirements.txt
+│   ├── yescaptcha/
+│   └── files/
+│
+└── config.example.json         # Пример конфига
 ```
 
 ## Формат аккаунтов

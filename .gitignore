@@ -1,9 +1,57 @@
-files/Accounts.txt
-files/error.txt
-files/settings.json
-files/logs
-files/Success.txt
-files/results
-files/cookies
-files/headers.json
-files/screenshots
+# Root level files (old structure)
+files/
+
+# Proxy file (contains credentials)
+proxys.txt
+config.json
+
+# Checker project
+checker/files/Accounts.txt
+checker/files/error.txt
+checker/files/settings.json
+checker/files/logs/
+checker/files/Success.txt
+checker/files/results/
+checker/files/cookies/
+
+# Password changer project
+password_changer/files/Accounts.txt
+password_changer/files/error.txt
+password_changer/files/settings.json
+password_changer/files/logs/
+password_changer/files/Success.txt
+password_changer/files/results/
+password_changer/files/cookies/
+
+# Captured network data (contains sensitive info)
+*.json
+!**/requirements.txt
+!**/settings.example.json
+
+# Large JS files from Apple
+*.js
+!checker/**/*.py
+!password_changer/**/*.py
+
+# Python virtual environment
+apple-unlocker-env/
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
